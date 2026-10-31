@@ -560,7 +560,7 @@ class POP3_Base
       $this->log($strRes);
       // 1. the check for the strlen of the result is a workaround for some server who don't send something after the quit command
       // 2. should run with qmailer too...qmailer bug (pop3.class.inc) "." instead of "+OK" after RETR command
-      if( strlen($strRes) > 0 && $strRes{0} == '-' )
+      if( strlen($strRes) > 0 && $strRes[0] == '-' )
 	{
 	  throw new POP3_Exception(trim($strRes), self::ERR_SEND_CMD);
 	}
@@ -658,7 +658,7 @@ class POP3_Base
 	{
 	  $strBuffer = $this->recvString();
 	  $strRes .= $strBuffer;
-	  if( strlen($strBuffer) == 3 && $strBuffer{0} == '.'  )
+	  if( strlen($strBuffer) == 3 && $strBuffer[0] == '.'  )
 	    {
 	      break;
 	    }
@@ -712,16 +712,16 @@ class POP3_Base
       $bOpenTag = FALSE;
       for( $i=0; $i < $intBufferLength; $i++ )
         {
-	  if( $strBuffer{$i} == '>' )
+	  if( $strBuffer[$i] == '>' )
             {
 	      break;
             }
 	  if( $bOpenTag )
             {
-	      $this->strAPOPBanner .= $strBuffer{$i};
+	      $this->strAPOPBanner .= $strBuffer[$i];
 	      continue;
             }
-	  if( $strBuffer{$i} == '<' )
+	  if( $strBuffer[$i] == '<' )
             {
 	      $bOpenTag = TRUE;
             }
