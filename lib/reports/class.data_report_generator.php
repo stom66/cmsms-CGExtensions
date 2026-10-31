@@ -83,7 +83,7 @@ class data_report_generator extends tabular_report_generator
     /**
      * @ignore
      */
-    protected function do_group_header(tabular_report_defn_group $grp)
+    protected function do_group_header(tabular_report_defn_group $grp,$is_first = FALSE)
     {
         // this method does not call the parent method
         $lines = $grp->get_header_lines();
