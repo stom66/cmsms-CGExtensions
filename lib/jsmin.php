@@ -192,6 +192,7 @@ class JSMin {
   }
 
   protected function isAlphaNum($c) {
+    if ($c === null || $c === '') return false; // end of input (PHP 8.1/8.5: ord()/preg_match() deprecations)
     return ord($c) > 126 || $c === '\\' || preg_match('/^[\w\$]$/', $c) === 1;
   }
 
