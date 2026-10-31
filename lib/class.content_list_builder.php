@@ -118,7 +118,7 @@ class content_list_builder
         switch( $key ) {
         case 'parent':
         case 'current':
-            if( $val instanceof cms_tree ) {
+            if( $val instanceof \cms_tree ) {
                 $val = (int) $val->get_tag('id');
                 $this->_data[$key] = $val;
             }

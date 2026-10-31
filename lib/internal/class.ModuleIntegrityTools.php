@@ -118,16 +118,16 @@ final class ModuleIntegrityTools
 
     public static function check_cge_modules()
     {
-        $module_names = ModuleOperations::get_instance()->GetInstalledModules();
+        $module_names = \ModuleOperations::get_instance()->GetInstalledModules();
         if( !count($module_names) ) throw new \LogicException('Could not get a list of installed modules');
 
         $out = array();
         foreach( $module_names as $module_name ) {
-            if( ModuleOperations::get_instance()->IsSystemModule($module_name) ) continue; // ignore system modules.
+            if( \ModuleOperations::get_instance()->IsSystemModule($module_name) ) continue; // ignore system modules.
 
             $mod = \cms_utils::get_module($module_name);
             if( !$mod ) throw new \cg_notfoundException($module_name.' could not be loaded');
-            if( !$mod instanceof CGExtensions ) continue;
+            if( !$mod instanceof \CGExtensions ) continue;
 
             $out[] = self::check_module($module_name);
         }

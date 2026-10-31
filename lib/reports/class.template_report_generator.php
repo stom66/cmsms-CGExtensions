@@ -115,7 +115,7 @@ class template_report_generator extends data_report_generator
         $smarty->assign('report_data',$data);
         $actionmodule = $smarty->get_template_vars('actionmodule');
         if( $actionmodule ) {
-            $mod = cms_utils::get_module($actionmodule);
+            $mod = \cms_utils::get_module($actionmodule);
             if( is_object($mod) ) {
                 if( endswith($this->get_template(),'.tpl') ) {
                     $out = $mod->ProcessTemplate($this->get_template());

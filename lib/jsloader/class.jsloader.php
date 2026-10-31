@@ -648,7 +648,7 @@ final class jsloader
                 else if( isset($rec->cssname) ) {
                     if( version_compare(CMS_VERSION,'1.99-alpha0') < 0 ) {
                         $query = 'SELECT css_id, css_name, css_text FROM '.cms_db_prefix().'css WHERE css_name = ?';
-                        $db = CmsApp::get_instance()->GetDb();
+                        $db = \CmsApp::get_instance()->GetDb();
                         $row = $db->GetRow($query,array($rec->cssname));
                         if( !is_array($row) ) return;
                         $css = trim($row['css_text']);
