@@ -61,6 +61,11 @@ final class cge_utils
     /**
      * @ignore
      */
+    private $settings;
+
+    /**
+     * @ignore
+     */
     private static $_instance;
 
     /**
