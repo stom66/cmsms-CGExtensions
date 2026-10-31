@@ -1343,12 +1343,12 @@ final class smarty_plugins
 
     public function cgjs_require($params,$smarty)
     {
-        $lib = trim(cge_utils::get_param($params,'lib'));
-        $cssname = trim(cge_utils::get_param($params,'cssname'));
-        $cssfile = trim(cge_utils::get_param($params,'cssfile'));
-        $cssurl = trim(cge_utils::get_param($params,'cssurl'));
-        $jsfile = trim(cge_utils::get_param($params,'jsfile'));
-        $jsurl = trim(cge_utils::get_param($params,'jsurl'));
+        $lib = trim((string) cge_utils::get_param($params,'lib'));
+        $cssname = trim((string) cge_utils::get_param($params,'cssname'));
+        $cssfile = trim((string) cge_utils::get_param($params,'cssfile'));
+        $cssurl = trim((string) cge_utils::get_param($params,'cssurl'));
+        $jsfile = trim((string) cge_utils::get_param($params,'jsfile'));
+        $jsurl = trim((string) cge_utils::get_param($params,'jsurl'));
         $depends = cge_utils::get_param($params,'depends');
         $nominify = cge_param::get_bool($params,'nominify',false);
         $key = cge_param::get_string($params,'key');
