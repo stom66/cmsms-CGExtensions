@@ -70,7 +70,7 @@ final class cge_date_utils
      * @param string $prefix2 An optional second prefix to append to the first one (i.e: the field name)
      * @return int unix timestamp representing the date in the input parmeters at 00:00 hours.  or null
      */
-    public static function date_from_form(array $params,string $prefix,string $prefix2 = null)
+    public static function date_from_form(array $params,string $prefix,?string $prefix2 = null)
     {
         $prefix = (string) $prefix;
         $prefix .= (string) $prefix2;
@@ -121,7 +121,7 @@ final class cge_date_utils
      * @param int $year Optional year.
      * @return bool
      */
-    static public function is_leapyear(int $year = null) : bool
+    static public function is_leapyear(?int $year = null) : bool
     {
         if( !$year ) $year = date('Y');
 
@@ -139,7 +139,7 @@ final class cge_date_utils
      * @param int $year The specified year.  If not specified, the current year is used.
      * @return int
      */
-    static public function days_in_month(int $month = null,int $year = null) : int
+    static public function days_in_month(?int $month = null,?int $year = null) : int
     {
         $days_in_month = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
 

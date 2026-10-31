@@ -168,7 +168,7 @@ final class cge_dir
      * @param callable $callback An optional callback to call after creating the method.
      * @return bool
      */
-    public static function mkdirr (string $pathname,int $mode = 0755,callable $callback = null) : bool
+    public static function mkdirr (string $pathname,int $mode = 0755,?callable $callback = null) : bool
     {
         // Check if directory already exists
         if (empty($pathname) || is_dir ($pathname)) return TRUE;

@@ -343,7 +343,7 @@ class cg_fileupload
      * @param string $subfield Assume that the prefix+field name represent an array
      * @return bool
      */
-    public function check_upload_attempted(string $name,string $subfield = null)
+    public function check_upload_attempted(string $name,?string $subfield = null)
     {
         $fldname = $this->_prefix.$name;
 
@@ -398,7 +398,7 @@ class cg_fileupload
      * @param string $subfield The name of any subfield.
      * @return array|null
      */
-    protected function get_file_record(string $field_name,string $subfield = null)
+    protected function get_file_record(string $field_name,?string $subfield = null)
     {
         // note, sets errno
 
@@ -447,7 +447,7 @@ class cg_fileupload
      * @param string $field_name The input field name
      * @param string $subfield An optional subfield name
      */
-    public function get_uploaded_filename(string $field_name, string $subfield = null)
+    public function get_uploaded_filename(string $field_name, ?string $subfield = null)
     {
         $file = $this->get_file_record( $field_name, $subfield );
         if( !$file ) return;
@@ -529,7 +529,7 @@ class cg_fileupload
      * @param string $subfield Assume that the prefix+field name represent an array
      * @return bool True on success, false on error.
      */
-    public function handle_upload(string $name,string $destfilename='',string $subfield = null)
+    public function handle_upload(string $name,string $destfilename='',?string $subfield = null)
     {
         $fldname = $this->_prefix.$name;
         if( !isset($this->_files) || !isset($this->_files[$fldname]) ) {

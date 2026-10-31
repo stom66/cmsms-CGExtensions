@@ -61,7 +61,7 @@ class cg_exception extends \Exception
      * @param int $code The exception code
      * @param \Exception $parent a parent exception
      */
-    public function __construct($str = '',$code = 0,\Exception $parent = null)
+    public function __construct($str = '',$code = 0,?\Exception $parent = null)
     {
         if( strpos($str,'%%') ) {
             $parts = explode('%%',$str,3);

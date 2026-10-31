@@ -97,7 +97,7 @@ final class cge_param
      * @param int $dflt The default value to use if the key does not exist in the $params aray.
      * @return int|null
      */
-    public static function get_int($params,string $key,int $dflt = null)
+    public static function get_int($params,string $key,?int $dflt = null)
     {
         $res = cge_utils::get_empty_param($params,$key,$dflt);
         if( !is_null($res) ) return (int) $res;
@@ -163,7 +163,7 @@ final class cge_param
      * @param string $key The key to the associative array
      * @param float $dflt The default value to use if the key does not exist in the $params aray.
      */
-    public static function get_float($params,string $key,float $dflt = null)
+    public static function get_float($params,string $key,?float $dflt = null)
     {
         $tmp = cge_utils::get_empty_param($params,$key,$dflt);
         if( !is_null($tmp) ) return cge_string::to_float($tmp);

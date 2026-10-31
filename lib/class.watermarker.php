@@ -39,7 +39,7 @@ namespace CGExtensions;
 
 class wm_exception extends \cg_exception
 {
-    public function __construct($str = '',$code = 0,\Exception $parent = null)
+    public function __construct($str = '',$code = 0,?\Exception $parent = null)
     {
         if( (int)$str >= 1000 ) $str = 'CGExtensions%%watermarkerror_'.$str;
         if( strpos($str,'%%') == FALSE )  $str = 'CGExtensions%%'.$str;

@@ -223,7 +223,7 @@ final class cge_userops
      * @param int $uid The desired CMSMS admin user id.  If no userid is provided, the currently logged in admin user account (if any) is used.
      * @return string
      */
-    static public function get_uid_email(int $uid = null)
+    static public function get_uid_email(?int $uid = null)
     {
         $uid = (int)$uid;
         if( $uid < 1 ) $uid = get_userid(false);
@@ -257,7 +257,7 @@ final class cge_userops
      * @param int[] $uid_list
      * @return array
      */
-    static public function get_userlist(array $uid_list = null)
+    static public function get_userlist(?array $uid_list = null)
     {
         $ops = UserOperations::get_instance();
         $allusers = $ops->LoadUsers();

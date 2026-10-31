@@ -87,7 +87,7 @@ class cge_uploader extends cg_fileupload
      */
     private $_imagetypes;
 
-    public function __construct(string $prefix, string $destdir, watermarker $obj = null)
+    public function __construct(string $prefix, string $destdir, ?watermarker $obj = null)
     {
         parent::__construct($prefix, $destdir);
         $this->_watermarker = $obj;
@@ -290,7 +290,7 @@ class cge_uploader extends cg_fileupload
      * @param string $subfield
      * @return string The basename of the uploaded file.
      */
-    public function handle_upload(string $name,string $destfilename = '',string $subfield = null)
+    public function handle_upload(string $name,string $destfilename = '',?string $subfield = null)
     {
         $res = parent::handle_upload($name,$destfilename,$subfield);
         if( !$res ) return false;

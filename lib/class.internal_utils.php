@@ -81,7 +81,7 @@ final class internal_utils
      * A convenience function for creating an <img> tag.
      * @deprecated
      */
-    protected function CreateImageTag(string $image,string $alt='',int $width=null,int $height=null,string $class='',string $addtext='')
+    protected function CreateImageTag(string $image,string $alt='',?int $width=null,?int $height=null,string $class='',string $addtext='')
     {
         $txt = "<img src=\"$image\"";
         $txt .= " alt=\"$alt\"";
@@ -101,7 +101,7 @@ final class internal_utils
      * A convenience function to search for an image in certain preset
      * directories
      */
-    function DisplayImage(CGExtensions $mod, string $image, string $alt='', string $class='', int $width =null, int $height=null, string $id='')
+    function DisplayImage(CGExtensions $mod, string $image, string $alt='', string $class='', ?int $width =null, ?int $height=null, string $id='')
     {
         $config = $this->mod->config;
         if( !$class && $this->mod->cms->is_frontend_request() ) $class = 'systemicon';

@@ -115,7 +115,7 @@ final class cge_utils
      * @param string|null $string The datetime string
      * @return int
      */
-    public static function unix_time(string $string = null)
+    public static function unix_time(?string $string = null)
     {
         // snarfed from smarty.
         $string = trim($string);
@@ -257,7 +257,7 @@ final class cge_utils
      * @param string $mime_type The output mime type
      * @param string $filename The output filename (suggested to the browser)
      */
-    public static function view_file_and_exit(string $file,string $mime_type = null,string $filename = null)
+    public static function view_file_and_exit(string $file,?string $mime_type = null,?string $filename = null)
     {
         if( !file_exists($file) ) return false;
 
@@ -835,7 +835,7 @@ final class cge_utils
      * @param bool $download  Whether the file should be forced to download, or whether the browser can handle it
      * @return string A url that allows view or download of the image, but obfuscates the file name and path.
      */
-    static public function get_obfuscated_file_url(int $page_id, string $filename, bool $download = null )
+    static public function get_obfuscated_file_url(int $page_id, string $filename, ?bool $download = null )
     {
         $page_id = (int) $page_id;
         $filename = trim( $filename );

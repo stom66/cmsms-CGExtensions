@@ -405,7 +405,7 @@ class SimpleEmailProcessor implements EmailProcessor
      * @param EmailDestination $dest
      * @return Email
      */
-    protected function do_callback( callable $c = null, Email $eml, EmailDestination $dest )
+    protected function do_callback( ?callable $c, Email $eml, EmailDestination $dest )
     {
         if( $c && is_callable( $c ) ) {
             $eml = call_user_func_array( $c, [ $eml, $dest ] );

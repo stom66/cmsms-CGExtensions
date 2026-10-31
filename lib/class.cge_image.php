@@ -143,7 +143,7 @@ class cge_image
      * @param string $destSpec The complete path to the output file.
      * @param int $size The maximum size of the longest dimension of the image (in pixels).
      */
-    public static function transform_image(string $srcSpec,string $destSpec,int $size = null)
+    public static function transform_image(string $srcSpec,string $destSpec,?int $size = null)
     {
         if( !is_file( $srcSpec ) ) throw new \CmsInvalidDataException('File '.$srcSpec.' not found');
         if( !is_readable( $srcSpec ) ) throw new \CmsInvalidDataException('File '.$srcSpec.' is not readable');

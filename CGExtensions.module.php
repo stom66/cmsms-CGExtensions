@@ -1232,7 +1232,7 @@ class CGExtensions extends CMSModule
      * @param string $addtext Additional text for the img tag.
      * @return string
      */
-    function CreateImageTag(string $id,string $alt='',int $width=null,int $height=null,string $class='', string $addtext='')
+    function CreateImageTag(string $id,string $alt='',?int $width=null,?int $height=null,string $class='', string $addtext='')
     {
 	trigger_error('Deprecated usage of '.__METHOD__);
         return $this->get_utils()->CreateImageTag($id,$alt,$width,$height,$class,$addtext);
@@ -1254,7 +1254,7 @@ class CGExtensions extends CMSModule
      * @param int $height Height in pixels
      * @return string
      */
-    function DisplayImage(string $image,string $alt='',string $class='',int $width=null, $height=null)
+    function DisplayImage(string $image,string $alt='',string $class='',?int $width=null, $height=null)
     {
         return $this->get_utils()->DisplayImage($this, $image,$alt,$class,$width,$height);
     }
@@ -1476,7 +1476,7 @@ class CGExtensions extends CMSModule
     /**
      * @ignore
      */
-    final protected function set_action_id(string $id = null) { $this->_actionid = $id; }
+    final protected function set_action_id(?string $id = null) { $this->_actionid = $id; }
 
     /**
      * @ignore
@@ -1623,7 +1623,7 @@ class CGExtensions extends CMSModule
      * @param int $dflt The default page id to return if no match can be found
      * @return int
      */
-    function resolve_alias_or_id($txt,int $dflt = null)
+    function resolve_alias_or_id($txt,?int $dflt = null)
     {
         $txt = trim((string)$txt);
         if( !$txt ) return $dflt;
@@ -1695,7 +1695,7 @@ class CGExtensions extends CMSModule
      * @param bool $allow_empty Wether the default value should be used if the preference exists, but is empty.
      * @return string.
      */
-    public function CGGetUserPreference(string $pref_name,string $dflt_value = null,bool $allow_empty = FALSE)
+    public function CGGetUserPreference(string $pref_name,?string $dflt_value = null,bool $allow_empty = FALSE)
     {
         $key = '__'.$this->GetName().'_'.$pref_name;
         $tmp = cms_userprefs::get($key,$dflt_value);
@@ -1808,7 +1808,7 @@ class CGExtensions extends CMSModule
      * @param string $pattern An optional pattern, if no pattern is specified, *.* is assumed.
      * @return string[]|null
      */
-    public function get_module_files(string $dirname,string $pattern = null)
+    public function get_module_files(string $dirname,?string $pattern = null)
     {
         if( !$dirname ) return;
         $tmp = realpath($dirname);
@@ -1860,7 +1860,7 @@ class CGExtensions extends CMSModule
      * @param object $parent An optional parent template object.
      * @return object
      */
-    public function CreateSmartyTemplate(string $template_name,string $prefix = null,string $cache_id = null,string $compile_id = null,$parent = null)
+    public function CreateSmartyTemplate(string $template_name,?string $prefix = null,?string $cache_id = null,?string $compile_id = null,$parent = null)
     {
         $smarty = null;
         if( $parent ) $smarty = $parent;
@@ -1886,7 +1886,7 @@ class CGExtensions extends CMSModule
      * @see CGExtensions::CreateSmartyTemplate
      * @return string
      */
-    public function ProcessSimpleTemplate(string $tpl_rsrc, array $data = null) : string
+    public function ProcessSimpleTemplate(string $tpl_rsrc, ?array $data = null) : string
     {
         $tpl = $this->CreateSmartyTemplate($tpl_rsrc);
         foreach( $data as $key => $val ) {
@@ -1905,7 +1905,7 @@ class CGExtensions extends CMSModule
      * @param string $prefix an optional prefix for database templates.
      * @return string
      */
-    public function CGGetTemplateResource(string $template_name,string $prefix = null)
+    public function CGGetTemplateResource(string $template_name,?string $prefix = null)
     {
         $template_name = trim($template_name);
         if( startswith($template_name,'string:') || startswith($template_name,'eval:') || startswith($template_name,'extends:') ) {
@@ -1934,7 +1934,7 @@ class CGExtensions extends CMSModule
      * @param string $prefix  For database templates, optionally prefix thie template name with this value.
      * @return string The output from the processed smarty template.
      */
-    public function CGProcessTemplate(string $template_name,string $prefix = null)
+    public function CGProcessTemplate(string $template_name,?string $prefix = null)
     {
         trigger_error('Deprecated usage of '.__METHOD__);
         $rsrc = $this->CGGetTemplateResource($template_name,$prefix);
@@ -1993,7 +1993,7 @@ class CGExtensions extends CMSModule
      * @param bool $is_error whether or not the msg is an error
      * @param string $title If not an error, optionally display a title to the message.
      */
-    public function ShowFormattedMessage(string $msg,bool $is_error = FALSE, string $title = null)
+    public function ShowFormattedMessage(string $msg,bool $is_error = FALSE, ?string $title = null)
     {
         if( $is_error ) {
             echo $this->DisplayErrorMessage($msg);
@@ -2031,7 +2031,7 @@ class CGExtensions extends CMSModule
      * @param array $opts An associative array of options.
      * @return notification_message
      */
-    protected function create_notification_message(array $opts = null) : notification_message
+    protected function create_notification_message(?array $opts = null) : notification_message
     {
         return new notification_message;
     }

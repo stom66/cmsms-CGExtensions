@@ -271,7 +271,7 @@ class tabular_report_cellfmt
      * @param string $align The alignment for this cell.  See the ALIGN constants in this class.
      * @param int    $span The number of columns this cell should span.  Some generators may ignore this.
      */
-    public function __construct($key,string $tpl = '{$val}',string $align = null,int $span = 1)
+    public function __construct($key,string $tpl = '{$val}',?string $align = null,int $span = 1)
     {
         // don't set a default for fmt as 'null' is valid when used in a header.
         $this->_key = trim($key); // todo: test this.
@@ -407,7 +407,7 @@ class tabular_report_defn_column extends tabular_report_cellfmt
      * @param string $align The alignment for cells in this column.
      * @param int $sorting A sorting prioriity for the column.
      */
-    public function __construct(string $key,string $label,string $fmt = null,string $align = null,int $sorting = null)
+    public function __construct(string $key,string $label,?string $fmt = null,?string $align = null,?int $sorting = null)
     {
         if( !$fmt ) $fmt = '{$val}';
         parent::__construct($key,$fmt,$align);

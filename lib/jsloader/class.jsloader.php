@@ -238,7 +238,7 @@ final class jsloader
      * @param null|string[] $depends array of library names (must already be registered) that this file depends upon.
      * @param bool $nominify If true, the library code will not be minified.
      */
-    public function add_jsfile(string $file,array $depends = null,bool $nominify = false)
+    public function add_jsfile(string $file,?array $depends = null,bool $nominify = false)
     {
         if( !$file || !is_string($file) ) return;
 
@@ -286,7 +286,7 @@ final class jsloader
      * @param bool $nominify If true, the library code will not be minified.
      * @param bool $append If true, this code will be appended after all other scripts.. otherwise included in order
      */
-    public function add_js(string $code,array $depends = null,bool $nominify = true,bool $append = false)
+    public function add_js(string $code,?array $depends = null,bool $nominify = true,bool $append = false)
     {
         if( !$code || !is_string($code) ) return;
 
@@ -306,7 +306,7 @@ final class jsloader
     /**
      * @ignore
      */
-    public function require_css(string $name,array $depends = null,bool $nominify = false)
+    public function require_css(string $name,?array $depends = null,bool $nominify = false)
     {
         $obj = new \stdClass;
         $obj->cssname = trim($name);
@@ -342,7 +342,7 @@ final class jsloader
      * @param null|string[] $depends Array of libraries that this css file depends upon.
      * @param bool $nominify If true, the library code will not be minified.
      */
-    public function add_cssfile(string $file,bool $depends = null,bool $nominify = true)
+    public function add_cssfile(string $file,?bool $depends = null,bool $nominify = true)
     {
         if( !$file || !is_string($file) ) return;
 
@@ -388,7 +388,7 @@ final class jsloader
      * @param bool $nominify If true, the library code will not be minified.
      * @param bool $append If true, this code will be appended after all other scripts.. otherwise included in order
      */
-    public function add_css(string $styles,array $depends = null,bool $nominify = true,bool $append = false)
+    public function add_css(string $styles,?array $depends = null,bool $nominify = true,bool $append = false)
     {
         if( !$styles || !is_string($styles) ) return;
 
@@ -467,7 +467,7 @@ final class jsloader
      * @param array $opts Options for this method (for further reference, see the {cgjs_render} smarty tag.
      * @return string HTML output code.
      */
-    public function render(array $opts = null)
+    public function render(?array $opts = null)
     {
         // add a postrender hook for frontend requests
         static $_hook_added;

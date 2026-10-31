@@ -94,7 +94,7 @@ final class cge_http
      * @param string $referer An optional referer string.  If not specified, a preset value is used.
      * @return string The HTML or other data returned from the request."
      */
-    static public function post(string $URL,array $data = null,string $referer = null)
+    static public function post(string $URL,?array $data = null,?string $referer = null)
     {
         if( startswith($URL,'//') ) {
             if( cmsms()->is_https_request() ) {

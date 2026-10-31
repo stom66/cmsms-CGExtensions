@@ -365,7 +365,7 @@ abstract class lookup_table
      * @param string $name
      * @param string $description
      */
-    public static function add(string $name,string $description = null)
+    public static function add(string $name,?string $description = null)
     {
         $name = trim((string) $name);
         if( !$name ) throw new \LogicException("A valid name must be passed to ".__METHOD__);
@@ -439,7 +439,7 @@ final class lookup_form_data
      *
      * @param array $data An associative array of properties.
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         foreach( $data as $key => $val ) {
             $this->$key = $val;

@@ -184,7 +184,7 @@ class cge_datastore
      * @param string $key3 - An optional additional key that is combined with key1 and key2
      * @return array
      */
-    public function listall(string $key1,string $key2 = null,string $key3 = null)
+    public function listall(string $key1,?string $key2 = null,?string $key3 = null)
     {
         $parms = array();
         $where[] = array();

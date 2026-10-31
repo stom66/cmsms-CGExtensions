@@ -511,7 +511,7 @@ class Email
      * @param string $name An optional text name
      * @return Email
      */
-    public function add_address(string $addr, string $name = null) : Email
+    public function add_address(string $addr, ?string $name = null) : Email
     {
         if( !is_email( $addr ) ) return $this;
         if( in_array( $addr, $this->_to_addr ) ) return $this;
@@ -530,7 +530,7 @@ class Email
      * @param string $name An optional text name
      * @return Email
      */
-    public function add_cc(string $addr, string $name = null) : Email
+    public function add_cc(string $addr, ?string $name = null) : Email
     {
         if( !is_email( $addr ) ) return $this;
         if( in_array( $addr, $this->_cc_addr ) ) return $this;
@@ -549,7 +549,7 @@ class Email
      * @param string $name An optional text name
      * @return Email
      */
-    public function add_bcc(string $addr, string $name = null) : Email
+    public function add_bcc(string $addr, ?string $name = null) : Email
     {
         if( !is_email( $addr ) ) return $this;
         if( in_array( $addr, $this->_bcc_addr ) ) return $this;
