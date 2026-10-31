@@ -1311,9 +1311,9 @@ final class smarty_plugins
     public function cge_cached_url($params,$smarty)
     {
         $url = get_parameter_value($params,'url');
-        $time = get_paremeter_value($params,'time',120);
+        $time = get_parameter_value($params,'time',120);
 
-        $obj = new cge_cached_remote_file($url,$time);
+        $obj = new \cge_cached_remote_file($url,$time);
         $out = $obj->file_get_contents();
         if( isset($params['assign']) ) {
             $smarty->assign($params['assign'],$out);
