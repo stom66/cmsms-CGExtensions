@@ -201,8 +201,8 @@ final class smarty_plugins
         $selected = '';
         $out = '';
         $seltxt = '';
-        $id = trim(cge_utils::get_param($params,'id'));
-        $class = trim(cge_utils::get_param($params,'class'));
+        $id = trim((string) cge_utils::get_param($params,'id'));
+        $class = trim((string) cge_utils::get_param($params,'class'));
 
         if( isset($params['prefix']) ) $prefix = trim($params['prefix']);
         if( isset($params['name']) ) $name = trim($params['name']);
@@ -486,7 +486,7 @@ final class smarty_plugins
 
         if( $wysiwyg ) $syntax = false; // no syntax and wysiwyg at the same time.
 
-        $id = trim(cge_utils::get_param($params,'id',$id));
+        $id = trim((string) cge_utils::get_param($params,'id',$id));
         $rows = (int) cge_utils::get_param($params,'rows',$rows);
         $rows = max(1,$rows);
         $cols = (int) cge_utils::get_param($params,'cols',$cols);
@@ -1406,8 +1406,8 @@ final class smarty_plugins
 
     public function cge_pageoptions($params,$smarty)
     {
-        $current = trim(cge_utils::get_param($params,'value'));
-        $current = trim(cge_utils::get_param($params,'selected'));
+        $current = trim((string) cge_utils::get_param($params,'value'));
+        $current = trim((string) cge_utils::get_param($params,'selected'));
         $none = cge_utils::to_bool(cge_utils::get_param($params,'none'));
 
         $params['current'] = $current;
