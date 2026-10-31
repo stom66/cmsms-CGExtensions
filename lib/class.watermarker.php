@@ -294,7 +294,7 @@ class watermarker
         $h_resultimg = null;
         $srcinfo = array();
         $wminfo = null;
-        if( is_resource($srcfile) ) {
+        if( is_resource($srcfile) || $srcfile instanceof \GdImage ) { // PHP 8+: GD images are GdImage objects
             $srcinfo[0] = imagesx( $srcfile );
             $srcinfo[1] = imagesy( $srcfile );
             $h_resultimg = $srcfile;
