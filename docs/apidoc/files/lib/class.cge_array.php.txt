@@ -349,7 +349,7 @@ final class cge_array
         $return = '';
         $values = array_values($data);
         for( $i = 0, $n = count($values); $i < $n; $i++ ) {
-            if( !empty($values[$i]) ) $values[$i] = $quote . (string) $values[$i] . $quote;
+            if( strlen($values[$i]) != 0 ) $values[$i] = $quote.$values[$i].$quote;
         }
         return implode($glue,$values);
     }

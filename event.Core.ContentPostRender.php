@@ -45,10 +45,13 @@ if( !$pretty_html && !$min_html ) return; // do nothin
 
 $in = $params['content'];
 if( strpos('</body>',$in) === FALSE ) $in = str_replace('</html>','</body></html>',$in);
-$the_head_parm = -1; $the_body_parm = -1;
+$the_head_parm = -1; $the_body_parm = -1; $the_comments_parm = 3;
 if( $pretty_html ) {
     $the_head_parm = 1;
     $the_body_parm = 4;
+}
+if( $min_html ) {
+    $the_comments_parm = 1;
 }
 
 $page_top = $page_bottom = $page_middle = $head_section = $body_section = null;
@@ -75,17 +78,18 @@ require_once(__DIR__.'/lib/htmLawed.php');
 $out = $page_top;
 if( $the_head_parm < 0 ) {
     // minified head output
-    $head_section = preg_replace('/<!--(.*?)-->/','',$head_section);
     $head_section = preg_replace('/>\s+</','><',$head_section);
     $head_section = trim(str_replace("\n",'',$head_section));
 }
 $out .= $head_section;
-$html_conf = array('tidy'=>$the_body_parm,'schemes'=>'*:*');
+$html_conf = array('tidy'=>$the_body_parm,'schemes'=>'*:*','comments'=>$the_comments_parm);
 //$html_conf = array('tidy'=>$the_body_parm,'schemes'=>'*: mailto,http,https,ftp,file,tel');
 $out .= $page_middle.htmLawed($body_section,$html_conf).'</body></html>';
+if( $the_comments_parm > 0 ) {
+   $out = preg_replace('/<!--(.*?)-->/','',$out);
+}
 $params['content'] = $out;
 
 #
 # EOF
 #
-?>

@@ -324,7 +324,7 @@ class CGExtensions extends CMSModule
      * @return string
      */
     public function GetVersion() {
-        if( get_class($this) == 'CGExtensions' ) return '1.65.2';
+        if( get_class($this) == 'CGExtensions' ) return '1.65.1';
         $str = parent::GetVersion();
         return $str;
     }
@@ -685,7 +685,7 @@ class CGExtensions extends CMSModule
      * @param string $selected A comma separated string of selected item keys
      * @param bool $allowduplicates
      * @param int $max_selected The maximum number of items that can be selected
-     * @param string $template Specify an alternate template ffor the sortable list control.  Smarty resources are permitted.  But if no resource is specified it is assumed that the template belongs to CGExtensions.
+     * @param string $template Specify an alternate template for the sortable list control
      * @param string $label_left  A label for the left column.
      * @param string $label_right A label for the right column.
      * @return string
@@ -698,7 +698,7 @@ class CGExtensions extends CMSModule
         if( empty($label_right) ) $label_right = $cge->Lang('available');
         if( !$template ) $template = 'sortablelist.tpl';
 
-        $tpl = $cge->CreateSmartyTemplate($template);
+        $tpl = $this->CreateSmartyTemplate($template);
         $tpl->assign('selectarea_selected_str',null);
         $tpl->assign('selectarea_selected',[]);
         if( !empty($selected) ) {
