@@ -76,6 +76,7 @@ class pagination implements \ArrayAccess
     /**
      * @ignore
      */
+    #[\ReturnTypeWillChange]
     public function OffsetGet($key)
     {
         switch( $key ) {
@@ -103,6 +104,7 @@ class pagination implements \ArrayAccess
     /**
      * @ignore
      */
+    #[\ReturnTypeWillChange]
     public function OffsetSet($key,$value)
     {
         // do nothing
@@ -111,6 +113,7 @@ class pagination implements \ArrayAccess
     /**
      * @ignore
      */
+    #[\ReturnTypeWillChange]
     public function OffsetExists($key)
     {
         // do nothing
@@ -119,6 +122,7 @@ class pagination implements \ArrayAccess
     /**
      * @ignore
      */
+    #[\ReturnTypeWillChange]
     public function OffsetUnset($key)
     {
         // do nothing

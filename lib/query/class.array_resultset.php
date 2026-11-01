@@ -202,6 +202,7 @@ class array_resultset extends base_resultset
     /**
      * @ignore
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->fields;
@@ -210,6 +211,7 @@ class array_resultset extends base_resultset
     /**
      * @ignore
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         $this->MoveNext();
@@ -218,6 +220,7 @@ class array_resultset extends base_resultset
     /**
      * @ignore
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->_pos;
@@ -226,6 +229,7 @@ class array_resultset extends base_resultset
     /**
      * @ignore
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         return ($this->_pos >= 0 && $this->EOF()) ? TRUE : FALSE;;

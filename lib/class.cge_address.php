@@ -126,6 +126,7 @@ class cge_address implements \JsonSerializable
     /**
      * @ignore
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return [ 'company' => $this->company, 'firstname' => $this->firstname, 'lastname' => $this->lastname, 'address1' => $this->address1,

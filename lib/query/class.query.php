@@ -102,6 +102,7 @@ abstract class query implements \ArrayAccess
      * @param string $key
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     abstract public function OffsetGet($key);
 
     /**
@@ -110,6 +111,7 @@ abstract class query implements \ArrayAccess
      * @param string $key
      * @param mixed $value
      */
+    #[\ReturnTypeWillChange]
     abstract public function OffsetSet($key,$value);
 
     /**
@@ -118,6 +120,7 @@ abstract class query implements \ArrayAccess
      * @param string $key
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     abstract public function OffsetExists($key);
 
     /**
@@ -125,6 +128,7 @@ abstract class query implements \ArrayAccess
      *
      * @param string $key
      */
+    #[\ReturnTypeWillChange]
     public function OffsetUnset($key)
     {
         // do nothing

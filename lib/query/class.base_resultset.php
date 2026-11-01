@@ -116,6 +116,7 @@ abstract class base_resultset implements \iterator
     /**
      * Move the pointer to the first matching row in the recordset.
      */
+    #[\ReturnTypeWillChange]
     abstract public function Rewind();
 
     /**

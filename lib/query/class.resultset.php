@@ -138,6 +138,7 @@ abstract class resultset extends base_resultset implements \Iterator
      *
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->get_object();
@@ -148,6 +149,7 @@ abstract class resultset extends base_resultset implements \Iterator
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         $this->MoveNext();
@@ -168,6 +170,7 @@ abstract class resultset extends base_resultset implements \Iterator
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->_pos;
@@ -178,6 +181,7 @@ abstract class resultset extends base_resultset implements \Iterator
      *
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         return ($this->_pos >= 0 && !$this->EOF()) ? TRUE : FALSE;;
