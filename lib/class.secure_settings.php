@@ -38,21 +38,23 @@ class secure_settings
 	    }
 	}
 
-        protected function read_file(string $filename, bool $verify_checksum = false) : array;
+
+	// MARK: read_file
+	protected function read_file(string $filename, bool $verify_checksum = false) : array
 	{
 	    $text = file_get_contents($filename);
 	    if( !$text ) throw new \InvalidArgumentException("File $filename is empty or does not exist");
 	    if( !startswith($text,self::MAGIC_HEADER) ) throw new \InvalidArgumentException("File $filename is not a valid settings file");
 	    $text = ltrim(substr($text, strlen(self::MAGIC_HEADER)));
 
-	    if( $verify_checksum && !startswith($text, 'CHECKSUM:' ) {
+	    if( $verify_checksum && !startswith($text, 'CHECKSUM:') ) {
 		throw new \InvalidArgumentException("File $filename does not contain required signature");
 	    }
 
 	    if( startswith($text, 'CHECKSUM:') ) {
 	        $pos = strpos($text,"\n");
 		$line = substr($text, 0, $pos);
-		$text = ltrim(substr($text, $pos);
+		$text = ltrim(substr($text, $pos));
 		if( $verify_checksum ) {
 	            list(,$file_cksum) = explode(' ',$line,2);
 		    $file_cksum = trim($file_cksum);
