@@ -14,7 +14,7 @@ class secure_settings
 	
 	const MAGIC_HEADER = '<?php die(1); // JSON SETTINGS FILE v1';
 
-	public function __construct(bool $pretty = true, string $salt = null )
+	public function __construct(bool $pretty = true, ?string $salt = null )
 	{
 	    $this->pretty = $pretty;
 	    if( !$salt ) $salt = __FILE__;
