@@ -1,0 +1,20 @@
+<?php
+namespace CGExtensions;
+use CMSModule;
+
+class Translator implements ITranslator
+{
+    private $mod;
+
+    public function __construct(CMSModule $mod)
+    {
+        $this->mod = $mod;
+    }
+
+    public function __invoke(/* var args */)
+    {
+        $args = func_get_args();
+        if( count($args) == 1 && is_array($args[0]) ) $args = $args[0];
+        return call_user_func_array([$this->mod,'Lang'], $args);
+    }
+} // class

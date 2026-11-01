@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>CGExtensions 1.65.2</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">CGExtensions 1.65.2</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/CGExtensions.html">\CGExtensions</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">123</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">65</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1347170948"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1347170948" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-371943006"></a>
+                                <a href="../namespaces/CGExtensions.html" style="margin-left: 30px; padding-left: 0">CGExtensions</a>
+            </div>
+            <div id="namespace-371943006" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1660012722"></a>
+                                <a href="../namespaces/CGExtensions.Email.html" style="margin-left: 30px; padding-left: 0">Email</a>
+            </div>
+            <div id="namespace-1660012722" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/CGExtensions.Email.EmailProcessor.html">EmailProcessor</a></li>
+                                                    <li class="interface"><a href="../classes/CGExtensions.Email.iEmailStorage.html">iEmailStorage</a></li>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.Email.AddressException.html">AddressException</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.Email.html">Email</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.EmailDestination.html">EmailDestination</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.Exception.html">Exception</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.FileEmailStorage.html">FileEmailStorage</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.MailTransportError.html">MailTransportError</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.SimpleEmailProcessor.html">SimpleEmailProcessor</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1687078251"></a>
+                                <a href="../namespaces/CGExtensions.jsloader.html" style="margin-left: 30px; padding-left: 0">jsloader</a>
+            </div>
+            <div id="namespace-1687078251" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.jsloader.jsloader.html">jsloader</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.jsloader.libdefn.html">libdefn</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-813619447"></a>
+                                <a href="../namespaces/CGExtensions.LinkDefinition.html" style="margin-left: 30px; padding-left: 0">LinkDefinition</a>
+            </div>
+            <div id="namespace-813619447" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/CGExtensions.LinkDefinition.LinkDefinitionGenerator.html">LinkDefinitionGenerator</a></li>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.LinkDefinition.CoreLinkDefinitionGenerator.html">CoreLinkDefinitionGenerator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.LinkDefinition.DataRef.html">DataRef</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.LinkDefinition.LinkDefinition.html">LinkDefinition</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.LinkDefinition.LinkDefinitionGeneratorFactory.html">LinkDefinitionGeneratorFactory</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-348441668"></a>
+                                <a href="../namespaces/CGExtensions.query.html" style="margin-left: 30px; padding-left: 0">query</a>
+            </div>
+            <div id="namespace-348441668" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.query.array_query.html">array_query</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.array_resultset.html">array_resultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.base_resultset.html">base_resultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.csvfilequery.html">csvfilequery</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.csvfileresultset.html">csvfileresultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.pagination.html">pagination</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.query.html">query</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.resultset.html">resultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.sql_query.html">sql_query</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.sql_resultset.html">sql_resultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.txtfilequery.html">txtfilequery</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.txtfileresultset.html">txtfileresultset</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-945501105"></a>
+                                <a href="../namespaces/CGExtensions.reports.html" style="margin-left: 30px; padding-left: 0">reports</a>
+            </div>
+            <div id="namespace-945501105" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.reports.data_report_generator.html">data_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.formatted_report_defn.html">formatted_report_defn</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.formatted_report_generator.html">formatted_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.html_report_generator.html">html_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.report_defn.html">report_defn</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.report_generator.html">report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html">tabular_report_cellfmt</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_defn.html">tabular_report_defn</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_defn_column.html">tabular_report_defn_column</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_defn_group.html">tabular_report_defn_group</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_defn_group_line.html">tabular_report_defn_group_line</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_generator.html">tabular_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.template_report_generator.html">template_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.text_report_generator.html">text_report_generator</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/CGExtensions.ITranslator.html">ITranslator</a></li>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.AssocData.html">AssocData</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.AssocDataNode.html">AssocDataNode</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.content_list_builder.html">content_list_builder</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.DailyHookTask.html">DailyHookTask</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.HourlyHookTask.html">HourlyHookTask</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.logger.html">logger</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.lookup_form_data.html">lookup_form_data</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.lookup_table.html">lookup_table</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.lookup_table_manager.html">lookup_table_manager</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Translator.html">Translator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.watermarker.html">watermarker</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.wm_exception.html">wm_exception</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cg_db_exception.html">cg_db_exception</a></li>
+                                                    <li class="class"><a href="../classes/cg_exception.html">cg_exception</a></li>
+                                                    <li class="class"><a href="../classes/cg_fileupload.html">cg_fileupload</a></li>
+                                                    <li class="class"><a href="../classes/cg_InvalidDataException.html">cg_InvalidDataException</a></li>
+                                                    <li class="class"><a href="../classes/cg_notfoundException.html">cg_notfoundException</a></li>
+                                                    <li class="class"><a href="../classes/cg_sql_error.html">cg_sql_error</a></li>
+                                                    <li class="class"><a href="../classes/cge_address.html">cge_address</a></li>
+                                                    <li class="class"><a href="../classes/cge_array.html">cge_array</a></li>
+                                                    <li class="class"><a href="../classes/cge_browser.html">cge_browser</a></li>
+                                                    <li class="class"><a href="../classes/cge_cached_remote_file.html">cge_cached_remote_file</a></li>
+                                                    <li class="class"><a href="../classes/cge_datastore.html">cge_datastore</a></li>
+                                                    <li class="class"><a href="../classes/cge_date.html">cge_date</a></li>
+                                                    <li class="class"><a href="../classes/cge_date_utils.html">cge_date_utils</a></li>
+                                                    <li class="class"><a href="../classes/cge_debug.html">cge_debug</a></li>
+                                                    <li class="class"><a href="../classes/cge_dir.html">cge_dir</a></li>
+                                                    <li class="class"><a href="../classes/cge_encrypt.html">cge_encrypt</a></li>
+                                                    <li class="class"><a href="../classes/cge_headers.html">cge_headers</a></li>
+                                                    <li class="class"><a href="../classes/cge_http.html">cge_http</a></li>
+                                                    <li class="class"><a href="../classes/cge_image.html">cge_image</a></li>
+                                                    <li class="class"><a href="../classes/cge_message.html">cge_message</a></li>
+                                                    <li class="class"><a href="../classes/cge_param.html">cge_param</a></li>
+                                                    <li class="class"><a href="../classes/cge_redirect.html">cge_redirect</a></li>
+                                                    <li class="class"><a href="../classes/cge_session.html">cge_session</a></li>
+                                                    <li class="class"><a href="../classes/cge_setup.html">cge_setup</a></li>
+                                                    <li class="class"><a href="../classes/cge_smartcache_handler.html">cge_smartcache_handler</a></li>
+                                                    <li class="class"><a href="../classes/cge_string.html">cge_string</a></li>
+                                                    <li class="class"><a href="../classes/cge_template_admin.html">cge_template_admin</a></li>
+                                                    <li class="class"><a href="../classes/cge_template_utils.html">cge_template_utils</a></li>
+                                                    <li class="class"><a href="../classes/cge_tmpdata.html">cge_tmpdata</a></li>
+                                                    <li class="class"><a href="../classes/cge_units.html">cge_units</a></li>
+                                                    <li class="class"><a href="../classes/cge_uploader.html">cge_uploader</a></li>
+                                                    <li class="class"><a href="../classes/cge_url.html">cge_url</a></li>
+                                                    <li class="class"><a href="../classes/cge_userops.html">cge_userops</a></li>
+                                                    <li class="class"><a href="../classes/cge_utils.html">cge_utils</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.html">CGExtensions</a></li>
+                                                    <li class="class"><a href="../classes/encrypted_store.html">encrypted_store</a></li>
+                                                    <li class="class"><a href="../classes/module_helper.html">module_helper</a></li>
+                                                    <li class="class"><a href="../classes/notification_message.html">notification_message</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>cge_uploader</h1>
+                    <p><em>A class to aide in dealing with uploaded files, including post processing of images.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/cge_uploader.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_set_preprocessor" class="">set_preprocessor()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_get_accepted_filetypes" class="">get_accepted_filetypes()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_set_accepted_filetypes" class="">set_accepted_filetypes()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_is_accepted_file" class="">is_accepted_file()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_set_max_filesize" class="">set_max_filesize()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_set_allow_overwrite" class="">set_allow_overwrite()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_get_error" class="">get_error()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_get_errormsg" class="">get_errormsg()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_reset_errors" class="">reset_errors()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_get_dest_dir" class="">get_dest_dir()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_set_dest_dir" class="">set_dest_dir()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_get_dest_filename" class="">get_dest_filename()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_get_orig_filename" class="">get_orig_filename()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_check_upload_attempted" class="">check_upload_attempted()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_get_uploaded_filename" class="">get_uploaded_filename()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_check_upload" class="">check_upload()</a><br />
+                                                                    <a href="../classes/cge_uploader.html#method_handle_upload" class="">handle_upload()</a><br />
+                                                                    <a href="../classes/cge_uploader.html#method_set_preview" class="">set_preview()</a><br />
+                                                                    <a href="../classes/cge_uploader.html#method_set_preview_size" class="">set_preview_size()</a><br />
+                                                                    <a href="../classes/cge_uploader.html#method_set_watermark" class="">set_watermark()</a><br />
+                                                                    <a href="../classes/cge_uploader.html#method_set_thumbnail" class="">set_thumbnail()</a><br />
+                                                                    <a href="../classes/cge_uploader.html#method_set_thumbnail_size" class="">set_thumbnail_size()</a><br />
+                                                                    <a href="../classes/cge_uploader.html#method_set_delete_orig" class="">set_delete_orig()</a><br />
+                                                                    <a href="../classes/cge_uploader.html#method_is_accepted_imagefile" class="">is_accepted_imagefile()</a><br />
+                                                                    <a href="../classes/cge_uploader.html#method_get_accepted_imagetypes" class="">get_accepted_imagetypes()</a><br />
+                                                                    <a href="../classes/cge_uploader.html#method_set_accepted_imagetypes" class="">set_accepted_imagetypes()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/cg_fileupload.html#constant_NOFILE" class="">NOFILE</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#constant_FILESIZE" class="">FILESIZE</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#constant_FILETYPE" class="">FILETYPE</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#constant_FILEEXISTS" class="">FILEEXISTS</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#constant_BADDESTDIR" class="">BADDESTDIR</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#constant_BADPERMS" class="">BADPERMS</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#constant_MOVEFAILED" class="">MOVEFAILED</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#constant_UPLOADFAILED" class="">UPLOADFAILED</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#constant_PREPROCESSING_FAILED" class="">PREPROCESSING_FAILED</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/cg_fileupload.html#method_set_errno" class="">set_errno()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_set_error" class="">set_error()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_get_new_filename" class="">get_new_filename()</a><br />
+                                                                    <a href="../classes/cg_fileupload.html#method_get_file_record" class="">get_file_record()</a><br />
+                                                                    <a href="../classes/cge_uploader.html#method_preprocess_upload" class="">preprocess_upload()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/lib.class.cge_uploader.html"><div class="path-wrapper">lib/class.cge_uploader.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">CGExtensions</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/cg_fileupload.html">\cg_fileupload</a></div>
+                                                                                                    <div class="namespace-wrapper">\cge_uploader</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_NOFILE" name="constant_NOFILE" class="anchor"></a>
+            <article id="constant_NOFILE" class="constant">
+                <h3 class="">NOFILE</h3>
+                <pre class="signature">NOFILE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_FILESIZE" name="constant_FILESIZE" class="anchor"></a>
+            <article id="constant_FILESIZE" class="constant">
+                <h3 class="">FILESIZE</h3>
+                <pre class="signature">FILESIZE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_FILETYPE" name="constant_FILETYPE" class="anchor"></a>
+            <article id="constant_FILETYPE" class="constant">
+                <h3 class="">FILETYPE</h3>
+                <pre class="signature">FILETYPE</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_FILEEXISTS" name="constant_FILEEXISTS" class="anchor"></a>
+            <article id="constant_FILEEXISTS" class="constant">
+                <h3 class="">FILEEXISTS</h3>
+                <pre class="signature">FILEEXISTS</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_BADDESTDIR" name="constant_BADDESTDIR" class="anchor"></a>
+            <article id="constant_BADDESTDIR" class="constant">
+                <h3 class="">BADDESTDIR</h3>
+                <pre class="signature">BADDESTDIR</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_BADPERMS" name="constant_BADPERMS" class="anchor"></a>
+            <article id="constant_BADPERMS" class="constant">
+                <h3 class="">BADPERMS</h3>
+                <pre class="signature">BADPERMS</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MOVEFAILED" name="constant_MOVEFAILED" class="anchor"></a>
+            <article id="constant_MOVEFAILED" class="constant">
+                <h3 class="">MOVEFAILED</h3>
+                <pre class="signature">MOVEFAILED</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_UPLOADFAILED" name="constant_UPLOADFAILED" class="anchor"></a>
+            <article id="constant_UPLOADFAILED" class="constant">
+                <h3 class="">UPLOADFAILED</h3>
+                <pre class="signature">UPLOADFAILED</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_PREPROCESSING_FAILED" name="constant_PREPROCESSING_FAILED" class="anchor"></a>
+            <article id="constant_PREPROCESSING_FAILED" class="constant">
+                <h3 class="">PREPROCESSING_FAILED</h3>
+                <pre class="signature">PREPROCESSING_FAILED</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\string  <span class="argument">$prefix</span>, \string  <span class="argument">$destdir</span>, \CGExtensions\watermarker  <span class="argument">$obj = null</span>) </pre>
+                <p><em>Constructor</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\string</td>
+                                <td>$prefix </td>
+                                <td><p>A common array key prefix for all files to be handled by this object.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>\string</td>
+                                <td>$destdir </td>
+                                <td><p>The full path to the destination directory.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/CGExtensions.watermarker.html">\CGExtensions\watermarker</a></td>
+                                <td>$obj </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_preprocessor" name="method_set_preprocessor" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_preprocessor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_preprocessor(callable  <span class="argument">$func</span>) </pre>
+                <p><em>Set a preprocessor object</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>callable</td>
+                                <td>$func </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_accepted_filetypes" name="method_get_accepted_filetypes" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_accepted_filetypes()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_accepted_filetypes() </pre>
+                <p><em>Return the list of accepted file extensions</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            preturn
+                        </th>
+                        <td>
+                                                                                            <p>string[]</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_accepted_filetypes" name="method_set_accepted_filetypes" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_accepted_filetypes()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_accepted_filetypes(mixed  <span class="argument">$filetypes</span>) </pre>
+                <p><em>Set the list of accepted file extensions</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$filetypes </td>
+                                <td><p>Accepts an array of strings, or a comma separated list of strings.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_is_accepted_file" name="method_is_accepted_file" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">is_accepted_file()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">is_accepted_file(string  <span class="argument">$filename</span>) : boolean</pre>
+                <p><em>Test if the specified filename is among the accepted filetypes</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$filename </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_max_filesize" name="method_set_max_filesize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_max_filesize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_max_filesize(integer  <span class="argument">$size</span>) </pre>
+                <p><em>Set the maximum file size for uploaded files (in kilobytes).</em></p>
+                <p>This method has no effect on the php.ini settings.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$size </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_allow_overwrite" name="method_set_allow_overwrite" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_allow_overwrite()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_allow_overwrite(boolean  <span class="argument">$flag = true</span>) </pre>
+                <p><em>Set a flag that indicates wether overwriting existing files is permitted.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$flag </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_error" name="method_get_error" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_error()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_error() : string</pre>
+                <p><em>Get any error code returned after handling the upload.</em></p>
+                <p>See the error codes contained in this string.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_errormsg" name="method_get_errormsg" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_errormsg()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_errormsg() : string</pre>
+                <p><em>Return a human readable message pertaining to any error code returned after handling the
+upload.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_reset_errors" name="method_reset_errors" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">reset_errors()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">reset_errors() </pre>
+                <p><em>Reset any errors</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_dest_dir" name="method_get_dest_dir" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_dest_dir()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_dest_dir() : string</pre>
+                <p><em>Return the destination directory for uploaded files</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_dest_dir" name="method_set_dest_dir" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_dest_dir()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_dest_dir(string  <span class="argument">$dir</span>) </pre>
+                <p><em>Set the destination directory for uploaded files</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$dir </td>
+                                <td><p>The destination directory</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_dest_filename" name="method_get_dest_filename" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_dest_filename()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_dest_filename() : string</pre>
+                <p><em>Get the optional destination filename.  If any has been specified.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_orig_filename" name="method_get_orig_filename" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_orig_filename()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_orig_filename() </pre>
+                <p><em>Get the original filename.</em></p>
+                <p>This method is only useful after handle_upload has been called.</p>
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_check_upload_attempted" name="method_check_upload_attempted" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">check_upload_attempted()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">check_upload_attempted(string  <span class="argument">$name</span>, string  <span class="argument">$subfield = null</span>) : boolean</pre>
+                <p><em>Check if a file has been uploaded with the specified field name.</em></p>
+                <p>If specified in the constructor a prefix will be prepended to this name for comparison.
+This method will not set any of the error members in the object.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The field name</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$subfield </td>
+                                <td><p>Assume that the prefix+field name represent an array</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_uploaded_filename" name="method_get_uploaded_filename" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_uploaded_filename()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_uploaded_filename(string  <span class="argument">$field_name</span>, string  <span class="argument">$subfield = null</span>) </pre>
+                <p><em>Get the name of an uploaded file before processing</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$field_name </td>
+                                <td><p>The input field name</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$subfield </td>
+                                <td><p>An optional subfield name</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_check_upload" name="method_check_upload" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">check_upload()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">check_upload(string  <span class="argument">$name</span>, string  <span class="argument">$subfield = null</span>, boolean  <span class="argument">$checkdir = TRUE</span>) : boolean</pre>
+                <p><em>Check if a file has been uploaded to the specified name, and if it is valid.</em></p>
+                <p>If specified in the constructor a prefix will be prepended to this name for comparison.
+This method will set internal error strings and numbers on failure.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The upload key name</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$subfield </td>
+                                <td><p>Assume that the prefix+field name represent an array</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$checkdir </td>
+                                <td><p>Test if the destination directory exists, and is writable.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True on success, false on error.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_handle_upload" name="method_handle_upload" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">handle_upload()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">handle_upload(string  <span class="argument">$name</span>, string  <span class="argument">$destfilename = &#039;&#039;</span>, string  <span class="argument">$subfield = null</span>) : string</pre>
+                <p><em>Handle the upload of a file.</em></p>
+                <p>This method will generate thumbnails from images that are in the accepted filetypes.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The input field name from the form's input field of type FILE.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$destfilename </td>
+                                <td><p>The destination filename.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$subfield </td>
+                                <td><p>Assume that the prefix+field name represent an array</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The basename of the uploaded file.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_preview" name="method_set_preview" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_preview()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_preview(boolean  <span class="argument">$flag = true</span>) </pre>
+                <p><em>Set a flag indicating that a preview (slightly larger than a thumbnail) image should be generated from an uploaded image.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$flag </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_preview_size" name="method_set_preview_size" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_preview_size()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_preview_size(integer  <span class="argument">$size</span>) </pre>
+                <p><em>Set the size (in pixels) of the preview image.</em></p>
+                <p>This is only applicable if preview is enabled.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$size </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_watermark" name="method_set_watermark" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_watermark()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_watermark(boolean  <span class="argument">$flag = true</span>) </pre>
+                <p><em>Set a flag indicating that an uploaded image should be watermarked.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$flag </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_thumbnail" name="method_set_thumbnail" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_thumbnail()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_thumbnail(boolean  <span class="argument">$flag = true</span>) </pre>
+                <p><em>Set a flag indicating that a thumbnail should be generated from an uploaded image.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$flag </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_thumbnail_size" name="method_set_thumbnail_size" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_thumbnail_size()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_thumbnail_size(integer  <span class="argument">$size</span>) </pre>
+                <p><em>Set the size (in pixels) of the generated thumbnails.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$size </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_delete_orig" name="method_set_delete_orig" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_delete_orig()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_delete_orig(boolean  <span class="argument">$flag = true</span>) </pre>
+                <p><em>Set a flag to indicate that the original file should be deleted after processing.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$flag </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_is_accepted_imagefile" name="method_is_accepted_imagefile" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">is_accepted_imagefile()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">is_accepted_imagefile(string  <span class="argument">$filename</span>) : boolean</pre>
+                <p><em>Test wether the filename specified is a file acceptable for processing.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$filename </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_accepted_imagetypes" name="method_get_accepted_imagetypes" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_accepted_imagetypes()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_accepted_imagetypes() : array&lt;mixed,string&gt;</pre>
+                <p><em>Return a list of the file extensions that will be accepted for processing on upload.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array&lt;mixed,string&gt;
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_accepted_imagetypes" name="method_set_accepted_imagetypes" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_accepted_imagetypes()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_accepted_imagetypes(string|array&lt;mixed,string&gt;  <span class="argument">$imagetypes</span>) </pre>
+                <p><em>Set the list of file extensions that will be accepted for processing on upload.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string|array&lt;mixed,string&gt;</td>
+                                <td>$imagetypes </td>
+                                <td><p>Either an array or a comma delimited list of file extensions.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_errno" name="method_set_errno" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">set_errno()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_errno(string  <span class="argument">$val</span>) </pre>
+                <p><em>Set the current error code
+See error codes defined above.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$val </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_error" name="method_set_error" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">set_error()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_error(string  <span class="argument">$val</span>) </pre>
+                <p><em>Set a human readable error message.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$val </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_new_filename" name="method_get_new_filename" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">get_new_filename()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_new_filename(string  <span class="argument">$input_name</span>) : string</pre>
+                <p><em>Get an adjusted upload filename, using the destname if provided.</em></p>
+                <p>Note: extension will be preserved in output filename.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$input_name </td>
+                                <td><p>The input filename</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_file_record" name="method_get_file_record" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">get_file_record()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_file_record(string  <span class="argument">$field_name</span>, string  <span class="argument">$subfield = null</span>) : array|null</pre>
+                <p><em>Given a field name, and a subfield.</em></p>
+                <p>. get the aggregated record from $_FILES so that
+the upload can be processed.</p>
+<p>In the event of a problem this method sets the errno variable for error handling.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$field_name </td>
+                                <td><p>The input field name</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$subfield </td>
+                                <td><p>The name of any subfield.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array|null
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cg_fileupload.html"><div class="path-wrapper">\cg_fileupload</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_preprocess_upload" name="method_preprocess_upload" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">preprocess_upload()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">preprocess_upload(array  <span class="argument">$fileinfo</span>) : string</pre>
+                <p><em>Preprocess the uploaded image file.  If the file is in the accepted image types.</em></p>
+                <p>by default this method will generate a preview image (if enabled), and then optionally watermark it.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$fileinfo </td>
+                                <td><p>The fileinfo array passed from the $_FILES upload global.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>The path and filename of the destination file.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">class.cge_uploader.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/lib/class.cge_uploader.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/CGExtensions.html">\CGExtensions</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on March 9th, 2020 at 16:29.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

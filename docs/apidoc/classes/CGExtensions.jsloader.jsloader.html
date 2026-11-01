@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>CGExtensions 1.65.2</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">CGExtensions 1.65.2</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/CGExtensions.html">\CGExtensions</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">123</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">65</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1826539942"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1826539942" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1311662426"></a>
+                                <a href="../namespaces/CGExtensions.html" style="margin-left: 30px; padding-left: 0">CGExtensions</a>
+            </div>
+            <div id="namespace-1311662426" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1575804259"></a>
+                                <a href="../namespaces/CGExtensions.Email.html" style="margin-left: 30px; padding-left: 0">Email</a>
+            </div>
+            <div id="namespace-1575804259" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/CGExtensions.Email.EmailProcessor.html">EmailProcessor</a></li>
+                                                    <li class="interface"><a href="../classes/CGExtensions.Email.iEmailStorage.html">iEmailStorage</a></li>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.Email.AddressException.html">AddressException</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.Email.html">Email</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.EmailDestination.html">EmailDestination</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.Exception.html">Exception</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.FileEmailStorage.html">FileEmailStorage</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.MailTransportError.html">MailTransportError</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.SimpleEmailProcessor.html">SimpleEmailProcessor</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1751826083"></a>
+                                <a href="../namespaces/CGExtensions.jsloader.html" style="margin-left: 30px; padding-left: 0">jsloader</a>
+            </div>
+            <div id="namespace-1751826083" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.jsloader.jsloader.html">jsloader</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.jsloader.libdefn.html">libdefn</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2066011654"></a>
+                                <a href="../namespaces/CGExtensions.LinkDefinition.html" style="margin-left: 30px; padding-left: 0">LinkDefinition</a>
+            </div>
+            <div id="namespace-2066011654" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/CGExtensions.LinkDefinition.LinkDefinitionGenerator.html">LinkDefinitionGenerator</a></li>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.LinkDefinition.CoreLinkDefinitionGenerator.html">CoreLinkDefinitionGenerator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.LinkDefinition.DataRef.html">DataRef</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.LinkDefinition.LinkDefinition.html">LinkDefinition</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.LinkDefinition.LinkDefinitionGeneratorFactory.html">LinkDefinitionGeneratorFactory</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-350333485"></a>
+                                <a href="../namespaces/CGExtensions.query.html" style="margin-left: 30px; padding-left: 0">query</a>
+            </div>
+            <div id="namespace-350333485" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.query.array_query.html">array_query</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.array_resultset.html">array_resultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.base_resultset.html">base_resultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.csvfilequery.html">csvfilequery</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.csvfileresultset.html">csvfileresultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.pagination.html">pagination</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.query.html">query</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.resultset.html">resultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.sql_query.html">sql_query</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.sql_resultset.html">sql_resultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.txtfilequery.html">txtfilequery</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.txtfileresultset.html">txtfileresultset</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1269092651"></a>
+                                <a href="../namespaces/CGExtensions.reports.html" style="margin-left: 30px; padding-left: 0">reports</a>
+            </div>
+            <div id="namespace-1269092651" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.reports.data_report_generator.html">data_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.formatted_report_defn.html">formatted_report_defn</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.formatted_report_generator.html">formatted_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.html_report_generator.html">html_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.report_defn.html">report_defn</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.report_generator.html">report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html">tabular_report_cellfmt</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_defn.html">tabular_report_defn</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_defn_column.html">tabular_report_defn_column</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_defn_group.html">tabular_report_defn_group</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_defn_group_line.html">tabular_report_defn_group_line</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_generator.html">tabular_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.template_report_generator.html">template_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.text_report_generator.html">text_report_generator</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/CGExtensions.ITranslator.html">ITranslator</a></li>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.AssocData.html">AssocData</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.AssocDataNode.html">AssocDataNode</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.content_list_builder.html">content_list_builder</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.DailyHookTask.html">DailyHookTask</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.HourlyHookTask.html">HourlyHookTask</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.logger.html">logger</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.lookup_form_data.html">lookup_form_data</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.lookup_table.html">lookup_table</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.lookup_table_manager.html">lookup_table_manager</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Translator.html">Translator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.watermarker.html">watermarker</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.wm_exception.html">wm_exception</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cg_db_exception.html">cg_db_exception</a></li>
+                                                    <li class="class"><a href="../classes/cg_exception.html">cg_exception</a></li>
+                                                    <li class="class"><a href="../classes/cg_fileupload.html">cg_fileupload</a></li>
+                                                    <li class="class"><a href="../classes/cg_InvalidDataException.html">cg_InvalidDataException</a></li>
+                                                    <li class="class"><a href="../classes/cg_notfoundException.html">cg_notfoundException</a></li>
+                                                    <li class="class"><a href="../classes/cg_sql_error.html">cg_sql_error</a></li>
+                                                    <li class="class"><a href="../classes/cge_address.html">cge_address</a></li>
+                                                    <li class="class"><a href="../classes/cge_array.html">cge_array</a></li>
+                                                    <li class="class"><a href="../classes/cge_browser.html">cge_browser</a></li>
+                                                    <li class="class"><a href="../classes/cge_cached_remote_file.html">cge_cached_remote_file</a></li>
+                                                    <li class="class"><a href="../classes/cge_datastore.html">cge_datastore</a></li>
+                                                    <li class="class"><a href="../classes/cge_date.html">cge_date</a></li>
+                                                    <li class="class"><a href="../classes/cge_date_utils.html">cge_date_utils</a></li>
+                                                    <li class="class"><a href="../classes/cge_debug.html">cge_debug</a></li>
+                                                    <li class="class"><a href="../classes/cge_dir.html">cge_dir</a></li>
+                                                    <li class="class"><a href="../classes/cge_encrypt.html">cge_encrypt</a></li>
+                                                    <li class="class"><a href="../classes/cge_headers.html">cge_headers</a></li>
+                                                    <li class="class"><a href="../classes/cge_http.html">cge_http</a></li>
+                                                    <li class="class"><a href="../classes/cge_image.html">cge_image</a></li>
+                                                    <li class="class"><a href="../classes/cge_message.html">cge_message</a></li>
+                                                    <li class="class"><a href="../classes/cge_param.html">cge_param</a></li>
+                                                    <li class="class"><a href="../classes/cge_redirect.html">cge_redirect</a></li>
+                                                    <li class="class"><a href="../classes/cge_session.html">cge_session</a></li>
+                                                    <li class="class"><a href="../classes/cge_setup.html">cge_setup</a></li>
+                                                    <li class="class"><a href="../classes/cge_smartcache_handler.html">cge_smartcache_handler</a></li>
+                                                    <li class="class"><a href="../classes/cge_string.html">cge_string</a></li>
+                                                    <li class="class"><a href="../classes/cge_template_admin.html">cge_template_admin</a></li>
+                                                    <li class="class"><a href="../classes/cge_template_utils.html">cge_template_utils</a></li>
+                                                    <li class="class"><a href="../classes/cge_tmpdata.html">cge_tmpdata</a></li>
+                                                    <li class="class"><a href="../classes/cge_units.html">cge_units</a></li>
+                                                    <li class="class"><a href="../classes/cge_uploader.html">cge_uploader</a></li>
+                                                    <li class="class"><a href="../classes/cge_url.html">cge_url</a></li>
+                                                    <li class="class"><a href="../classes/cge_userops.html">cge_userops</a></li>
+                                                    <li class="class"><a href="../classes/cge_utils.html">cge_utils</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.html">CGExtensions</a></li>
+                                                    <li class="class"><a href="../classes/encrypted_store.html">encrypted_store</a></li>
+                                                    <li class="class"><a href="../classes/module_helper.html">module_helper</a></li>
+                                                    <li class="class"><a href="../classes/notification_message.html">notification_message</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/CGExtensions.jsloader.html">\CGExtensions\jsloader</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\CGExtensions\jsloader</small>jsloader</h1>
+                    <p><em>A utility class to manage loading and combining javascript libraries and associated stylesheets.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/CGExtensions.jsloader.jsloader.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/CGExtensions.jsloader.jsloader.html#method_register" class="">register()</a><br />
+                                                                    <a href="../classes/CGExtensions.jsloader.jsloader.html#method_unregister_by_module" class="">unregister_by_module()</a><br />
+                                                                    <a href="../classes/CGExtensions.jsloader.jsloader.html#method_require_lib" class="">require_lib()</a><br />
+                                                                    <a href="../classes/CGExtensions.jsloader.jsloader.html#method_add_jsext" class="">add_jsext()</a><br />
+                                                                    <a href="../classes/CGExtensions.jsloader.jsloader.html#method_add_jsfile" class="">add_jsfile()</a><br />
+                                                                    <a href="../classes/CGExtensions.jsloader.jsloader.html#method_add_js" class="">add_js()</a><br />
+                                                                    <a href="../classes/CGExtensions.jsloader.jsloader.html#method_add_cssfile" class="">add_cssfile()</a><br />
+                                                                    <a href="../classes/CGExtensions.jsloader.jsloader.html#method_add_css" class="">add_css()</a><br />
+                                                                    <a href="../classes/CGExtensions.jsloader.jsloader.html#method_render" class="">render()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                                                <span class="label label-info">final</span>
+                    
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/lib.jsloader.class.jsloader.html"><div class="path-wrapper">lib/jsloader/class.jsloader.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">CGExtensions</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\CGExtensions\jsloader\jsloader</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                deprected
+                            </th>
+                            <td>
+                                                                    
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$key</span>, \cms_config  <span class="argument">$config</span>) </pre>
+                <p><em>Constructor</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td><p>A static key that is used in the unique naming of generated files.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>\cms_config</td>
+                                <td>$config </td>
+                                <td><p>The cms config instance to use.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_register" name="method_register" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">register()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">register(\CGExtensions\jsloader\libdefn  <span class="argument">$rec</span>, boolean  <span class="argument">$force = FALSE</span>) </pre>
+                <p><em>Register a library definition</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/CGExtensions.jsloader.libdefn.html">\CGExtensions\jsloader\libdefn</a></td>
+                                <td>$rec </td>
+                                <td><p>The library definition to register.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$force </td>
+                                <td><p>Force the libdefn to be registered even if it already has been.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_unregister_by_module" name="method_unregister_by_module" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">unregister_by_module()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">unregister_by_module(string  <span class="argument">$module_name</span>) </pre>
+                <p><em>Unregister all javascript libraries associated with a module.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$module_name </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_require_lib" name="method_require_lib" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">require_lib()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">require_lib(string  <span class="argument">$name</span>, boolean  <span class="argument">$nominify = false</span>) </pre>
+                <p><em>For this request, indicate that a javascript library is required.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$nominify </td>
+                                <td><p>If true, the library code will not be minified.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_add_jsext" name="method_add_jsext" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">add_jsext()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">add_jsext(string  <span class="argument">$url</span>, boolean  <span class="argument">$nominify = false</span>) </pre>
+                <p><em>Add an external javascript library.</em></p>
+                <p>[experimental]</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$url </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$nominify </td>
+                                <td><p>If true, the library code will not be minified.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_add_jsfile" name="method_add_jsfile" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">add_jsfile()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">add_jsfile(string  <span class="argument">$file</span>, null|array&lt;mixed,string&gt;  <span class="argument">$depends = null</span>, boolean  <span class="argument">$nominify = false</span>) </pre>
+                <p><em>For this request, add a specified javascript file.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$file </td>
+                                <td><p>The complete pathname to the javascript file.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>null|array&lt;mixed,string&gt;</td>
+                                <td>$depends </td>
+                                <td><p>array of library names (must already be registered) that this file depends upon.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$nominify </td>
+                                <td><p>If true, the library code will not be minified.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_add_js" name="method_add_js" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">add_js()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">add_js(string  <span class="argument">$code</span>, null|array&lt;mixed,string&gt;  <span class="argument">$depends = null</span>, boolean  <span class="argument">$nominify = true</span>, boolean  <span class="argument">$append = false</span>) </pre>
+                <p><em>Add javascript code to the output for this request.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$code </td>
+                                <td><p>The javascript code (script tags are not required)</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>null|array&lt;mixed,string&gt;</td>
+                                <td>$depends </td>
+                                <td><p>Array of required javascript libraries.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$nominify </td>
+                                <td><p>If true, the library code will not be minified.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$append </td>
+                                <td><p>If true, this code will be appended after all other scripts.. otherwise included in order</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_add_cssfile" name="method_add_cssfile" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">add_cssfile()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">add_cssfile(string  <span class="argument">$file</span>, null|array&lt;mixed,string&gt;  <span class="argument">$depends = null</span>, boolean  <span class="argument">$nominify = true</span>) </pre>
+                <p><em>Add a css file to the output.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$file </td>
+                                <td><p>The filename.  If not an absolute path, then search for the file within the current module directory (if any), the uploads path, and then the root path.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>null|array&lt;mixed,string&gt;</td>
+                                <td>$depends </td>
+                                <td><p>Array of libraries that this css file depends upon.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$nominify </td>
+                                <td><p>If true, the library code will not be minified.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_add_css" name="method_add_css" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">add_css()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">add_css(string  <span class="argument">$styles</span>, array  <span class="argument">$depends = null</span>, boolean  <span class="argument">$nominify = true</span>, boolean  <span class="argument">$append = false</span>) </pre>
+                <p><em>Add static css text to the output.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$styles </td>
+                                <td><p>The static CSS text (style tags are not needed).</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$depends </td>
+                                <td><p>A list of libraries that this css depends upon.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$nominify </td>
+                                <td><p>If true, the library code will not be minified.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$append </td>
+                                <td><p>If true, this code will be appended after all other scripts.. otherwise included in order</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_render" name="method_render" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">render()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">render(array  <span class="argument">$opts = null</span>) : string</pre>
+                <p><em>Render the output javascript and stylesheets into cachable files and output the appropriate HTML tags.</em></p>
+                <p>This function actually adds appropriate hook handlers to process the rendering of css and js tags during the final process of HTML rendering
+this removes all problems with smarty processing orders.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$opts </td>
+                                <td><p>Options for this method (for further reference, see the {cgjs_render} smarty tag.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>HTML output code.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">class.jsloader.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/lib/jsloader/class.jsloader.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/CGExtensions.html">\CGExtensions</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on March 9th, 2020 at 16:29.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

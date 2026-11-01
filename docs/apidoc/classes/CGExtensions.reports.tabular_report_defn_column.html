@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>CGExtensions 1.65.2</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">CGExtensions 1.65.2</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/CGExtensions.html">\CGExtensions</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">123</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">65</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1613484433"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1613484433" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1288189164"></a>
+                                <a href="../namespaces/CGExtensions.html" style="margin-left: 30px; padding-left: 0">CGExtensions</a>
+            </div>
+            <div id="namespace-1288189164" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-564382441"></a>
+                                <a href="../namespaces/CGExtensions.Email.html" style="margin-left: 30px; padding-left: 0">Email</a>
+            </div>
+            <div id="namespace-564382441" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/CGExtensions.Email.EmailProcessor.html">EmailProcessor</a></li>
+                                                    <li class="interface"><a href="../classes/CGExtensions.Email.iEmailStorage.html">iEmailStorage</a></li>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.Email.AddressException.html">AddressException</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.Email.html">Email</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.EmailDestination.html">EmailDestination</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.Exception.html">Exception</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.FileEmailStorage.html">FileEmailStorage</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.MailTransportError.html">MailTransportError</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.SimpleEmailProcessor.html">SimpleEmailProcessor</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1869467801"></a>
+                                <a href="../namespaces/CGExtensions.jsloader.html" style="margin-left: 30px; padding-left: 0">jsloader</a>
+            </div>
+            <div id="namespace-1869467801" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.jsloader.jsloader.html">jsloader</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.jsloader.libdefn.html">libdefn</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-111611594"></a>
+                                <a href="../namespaces/CGExtensions.LinkDefinition.html" style="margin-left: 30px; padding-left: 0">LinkDefinition</a>
+            </div>
+            <div id="namespace-111611594" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/CGExtensions.LinkDefinition.LinkDefinitionGenerator.html">LinkDefinitionGenerator</a></li>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.LinkDefinition.CoreLinkDefinitionGenerator.html">CoreLinkDefinitionGenerator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.LinkDefinition.DataRef.html">DataRef</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.LinkDefinition.LinkDefinition.html">LinkDefinition</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.LinkDefinition.LinkDefinitionGeneratorFactory.html">LinkDefinitionGeneratorFactory</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1772691287"></a>
+                                <a href="../namespaces/CGExtensions.query.html" style="margin-left: 30px; padding-left: 0">query</a>
+            </div>
+            <div id="namespace-1772691287" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.query.array_query.html">array_query</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.array_resultset.html">array_resultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.base_resultset.html">base_resultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.csvfilequery.html">csvfilequery</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.csvfileresultset.html">csvfileresultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.pagination.html">pagination</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.query.html">query</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.resultset.html">resultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.sql_query.html">sql_query</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.sql_resultset.html">sql_resultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.txtfilequery.html">txtfilequery</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.txtfileresultset.html">txtfileresultset</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1974614520"></a>
+                                <a href="../namespaces/CGExtensions.reports.html" style="margin-left: 30px; padding-left: 0">reports</a>
+            </div>
+            <div id="namespace-1974614520" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.reports.data_report_generator.html">data_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.formatted_report_defn.html">formatted_report_defn</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.formatted_report_generator.html">formatted_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.html_report_generator.html">html_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.report_defn.html">report_defn</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.report_generator.html">report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html">tabular_report_cellfmt</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_defn.html">tabular_report_defn</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_defn_column.html">tabular_report_defn_column</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_defn_group.html">tabular_report_defn_group</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_defn_group_line.html">tabular_report_defn_group_line</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_generator.html">tabular_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.template_report_generator.html">template_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.text_report_generator.html">text_report_generator</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/CGExtensions.ITranslator.html">ITranslator</a></li>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.AssocData.html">AssocData</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.AssocDataNode.html">AssocDataNode</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.content_list_builder.html">content_list_builder</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.DailyHookTask.html">DailyHookTask</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.HourlyHookTask.html">HourlyHookTask</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.logger.html">logger</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.lookup_form_data.html">lookup_form_data</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.lookup_table.html">lookup_table</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.lookup_table_manager.html">lookup_table_manager</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Translator.html">Translator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.watermarker.html">watermarker</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.wm_exception.html">wm_exception</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cg_db_exception.html">cg_db_exception</a></li>
+                                                    <li class="class"><a href="../classes/cg_exception.html">cg_exception</a></li>
+                                                    <li class="class"><a href="../classes/cg_fileupload.html">cg_fileupload</a></li>
+                                                    <li class="class"><a href="../classes/cg_InvalidDataException.html">cg_InvalidDataException</a></li>
+                                                    <li class="class"><a href="../classes/cg_notfoundException.html">cg_notfoundException</a></li>
+                                                    <li class="class"><a href="../classes/cg_sql_error.html">cg_sql_error</a></li>
+                                                    <li class="class"><a href="../classes/cge_address.html">cge_address</a></li>
+                                                    <li class="class"><a href="../classes/cge_array.html">cge_array</a></li>
+                                                    <li class="class"><a href="../classes/cge_browser.html">cge_browser</a></li>
+                                                    <li class="class"><a href="../classes/cge_cached_remote_file.html">cge_cached_remote_file</a></li>
+                                                    <li class="class"><a href="../classes/cge_datastore.html">cge_datastore</a></li>
+                                                    <li class="class"><a href="../classes/cge_date.html">cge_date</a></li>
+                                                    <li class="class"><a href="../classes/cge_date_utils.html">cge_date_utils</a></li>
+                                                    <li class="class"><a href="../classes/cge_debug.html">cge_debug</a></li>
+                                                    <li class="class"><a href="../classes/cge_dir.html">cge_dir</a></li>
+                                                    <li class="class"><a href="../classes/cge_encrypt.html">cge_encrypt</a></li>
+                                                    <li class="class"><a href="../classes/cge_headers.html">cge_headers</a></li>
+                                                    <li class="class"><a href="../classes/cge_http.html">cge_http</a></li>
+                                                    <li class="class"><a href="../classes/cge_image.html">cge_image</a></li>
+                                                    <li class="class"><a href="../classes/cge_message.html">cge_message</a></li>
+                                                    <li class="class"><a href="../classes/cge_param.html">cge_param</a></li>
+                                                    <li class="class"><a href="../classes/cge_redirect.html">cge_redirect</a></li>
+                                                    <li class="class"><a href="../classes/cge_session.html">cge_session</a></li>
+                                                    <li class="class"><a href="../classes/cge_setup.html">cge_setup</a></li>
+                                                    <li class="class"><a href="../classes/cge_smartcache_handler.html">cge_smartcache_handler</a></li>
+                                                    <li class="class"><a href="../classes/cge_string.html">cge_string</a></li>
+                                                    <li class="class"><a href="../classes/cge_template_admin.html">cge_template_admin</a></li>
+                                                    <li class="class"><a href="../classes/cge_template_utils.html">cge_template_utils</a></li>
+                                                    <li class="class"><a href="../classes/cge_tmpdata.html">cge_tmpdata</a></li>
+                                                    <li class="class"><a href="../classes/cge_units.html">cge_units</a></li>
+                                                    <li class="class"><a href="../classes/cge_uploader.html">cge_uploader</a></li>
+                                                    <li class="class"><a href="../classes/cge_url.html">cge_url</a></li>
+                                                    <li class="class"><a href="../classes/cge_userops.html">cge_userops</a></li>
+                                                    <li class="class"><a href="../classes/cge_utils.html">cge_utils</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.html">CGExtensions</a></li>
+                                                    <li class="class"><a href="../classes/encrypted_store.html">encrypted_store</a></li>
+                                                    <li class="class"><a href="../classes/module_helper.html">module_helper</a></li>
+                                                    <li class="class"><a href="../classes/notification_message.html">notification_message</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/CGExtensions.reports.html">\CGExtensions\reports</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\CGExtensions\reports</small>tabular_report_defn_column</h1>
+                    <p><em>A column definition for a tabular report.</em></p>
+                    <p>This class is used to indicate how to display a value for a certain cell.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html#method_get_key" class="">get_key()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html#method_get_template" class="">get_template()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html#method_set_template" class="">set_template()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html#method_get_alignment" class="">get_alignment()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html#method_get_span" class="">get_span()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html#method_get_class" class="">get_class()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html#method_set_class" class="">set_class()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_get_label" class="">get_label()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_set_label" class="">set_label()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_get_sorting" class="">get_sorting()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_set_sorting" class="">set_sorting()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_set_value_processor" class="">set_value_processor()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_process_value" class="">process_value()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_add_history_value" class="">add_history_value()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_add_group_history_value" class="">add_group_history_value()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_changed" class="">changed()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_reset_group" class="">reset_group()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_get_count" class="">get_count()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_get_min" class="">get_min()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_get_max" class="">get_max()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_get_sum" class="">get_sum()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_get_mean" class="">get_mean()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_get_median" class="">get_median()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_get_grp_count" class="">get_grp_count()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_get_grp_min" class="">get_grp_min()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_get_grp_max" class="">get_grp_max()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_get_grp_sum" class="">get_grp_sum()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_get_grp_mean" class="">get_grp_mean()</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_get_grp_median" class="">get_grp_median()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html#constant_ALIGN_LEFT" class="">ALIGN_LEFT</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html#constant_ALIGN_RIGHT" class="">ALIGN_RIGHT</a><br />
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html#constant_ALIGN_CENTER" class="">ALIGN_CENTER</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_get_grp_values" class="">get_grp_values()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/lib.reports.class.tabular_report_defn.html"><div class="path-wrapper">lib/reports/class.tabular_report_defn.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">CGExtensions</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html">\CGExtensions\reports\tabular_report_cellfmt</a></div>
+                                                                                                    <div class="namespace-wrapper">\CGExtensions\reports\tabular_report_defn_column</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALIGN_LEFT" name="constant_ALIGN_LEFT" class="anchor"></a>
+            <article id="constant_ALIGN_LEFT" class="constant">
+                <h3 class="">ALIGN_LEFT</h3>
+                <pre class="signature">ALIGN_LEFT</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html"><div class="path-wrapper">\CGExtensions\reports\tabular_report_cellfmt</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALIGN_RIGHT" name="constant_ALIGN_RIGHT" class="anchor"></a>
+            <article id="constant_ALIGN_RIGHT" class="constant">
+                <h3 class="">ALIGN_RIGHT</h3>
+                <pre class="signature">ALIGN_RIGHT</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html"><div class="path-wrapper">\CGExtensions\reports\tabular_report_cellfmt</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALIGN_CENTER" name="constant_ALIGN_CENTER" class="anchor"></a>
+            <article id="constant_ALIGN_CENTER" class="constant">
+                <h3 class="">ALIGN_CENTER</h3>
+                <pre class="signature">ALIGN_CENTER</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html"><div class="path-wrapper">\CGExtensions\reports\tabular_report_cellfmt</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$key</span>, string  <span class="argument">$label</span>, string  <span class="argument">$fmt = null</span>, string  <span class="argument">$align = null</span>, integer  <span class="argument">$sorting = null</span>) </pre>
+                <p><em>Construct a new column definition.</em></p>
+                <p>A column definition defines how values in an entire column will be treated.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td><p>The name of the column (must match the defined columns in the report definition).</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$label </td>
+                                <td><p>The displayable label for this column.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$fmt </td>
+                                <td><p>The smarty tempalte that defines how values in this column will be displayed.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$align </td>
+                                <td><p>The alignment for cells in this column.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$sorting </td>
+                                <td><p>A sorting prioriity for the column.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_key" name="method_get_key" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_key()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_key() : string</pre>
+                <p><em>Get the key (column name) for this object.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html"><div class="path-wrapper">\CGExtensions\reports\tabular_report_cellfmt</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_template" name="method_get_template" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_template()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_template() : string</pre>
+                <p><em>Get the template for values in this cell format</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html"><div class="path-wrapper">\CGExtensions\reports\tabular_report_cellfmt</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_template" name="method_set_template" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_template()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_template(string  <span class="argument">$tpl</span>) </pre>
+                <p><em>Set the template for values in this cell format.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tpl </td>
+                                <td><p>Smarty template.  It should be simple, and used for displaying a single value.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html"><div class="path-wrapper">\CGExtensions\reports\tabular_report_cellfmt</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_alignment" name="method_get_alignment" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_alignment()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_alignment() : string</pre>
+                <p><em>Get the alignment for cells using this format.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html"><div class="path-wrapper">\CGExtensions\reports\tabular_report_cellfmt</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_span" name="method_get_span" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_span()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_span() : integer</pre>
+                <p><em>Get the cell span for cells using this format.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html"><div class="path-wrapper">\CGExtensions\reports\tabular_report_cellfmt</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_class" name="method_get_class" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_class()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_class() : string</pre>
+                <p><em>Get the class name (if any) assigned to this cell format</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html"><div class="path-wrapper">\CGExtensions\reports\tabular_report_cellfmt</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_class" name="method_set_class" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_class()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_class(string  <span class="argument">$class</span>) </pre>
+                <p><em>Set a class name to use when outputting cells using this format.</em></p>
+                <p>Some generators may ignore this value. But HTML type generators will typically use this as a class name for the table cell.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$class </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html"><div class="path-wrapper">\CGExtensions\reports\tabular_report_cellfmt</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_label" name="method_get_label" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_label()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_label() : string</pre>
+                <p><em>Get the label for this column definition.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_label" name="method_set_label" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_label()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_label(string  <span class="argument">$label</span>) </pre>
+                <p><em>Set the label or this column definition</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$label </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_sorting" name="method_get_sorting" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_sorting()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_sorting() : integer</pre>
+                <p><em>Get the sorting for this column definition.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_sorting" name="method_set_sorting" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_sorting()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_sorting(integer  <span class="argument">$sorting</span>) </pre>
+                <p><em>Set the sorting for this column definition</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$sorting </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_value_processor" name="method_set_value_processor" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_value_processor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_value_processor(callable  <span class="argument">$fn</span>) </pre>
+                <p><em>Set an optional mechanism to adjust, process, or return a different value for values in this column.</em></p>
+                <p>This can be used for doing mathematical formulas on values, or retrieving foreign key related data from the database
+or otherwise translating input data.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>callable</td>
+                                <td>$fn </td>
+                                <td><p>A callable function that is of the form  func(string $value,\CGExtensions\query\resultset)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_process_value" name="method_process_value" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">process_value()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">process_value(string  <span class="argument">$val</span>, \CGExtensions\query\resultset  <span class="argument">$rs</span>) </pre>
+                <p><em>A callback method to process a value in this column.</em></p>
+                <p>by default this method will call the value processor callback (if defined), otherwise it will do nothing.
+This method is normally called by the report generator to determine the output value (but not the displayed string) for the column.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$val </td>
+                                <td><p>The current value for this column.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/CGExtensions.query.resultset.html">\CGExtensions\query\resultset</a></td>
+                                <td>$rs </td>
+                                <td><p>The resultset object.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_add_history_value" name="method_add_history_value" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">add_history_value()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">add_history_value(string  <span class="argument">$val</span>) </pre>
+                <p><em>Save a value for this column.  Useful in calcualting statistics that are global to the entire report.</em></p>
+                <p>This method is normally called by the report generator.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$val </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_add_group_history_value" name="method_add_group_history_value" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">add_group_history_value()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">add_group_history_value(string  <span class="argument">$grp_key</span>, string  <span class="argument">$val</span>) </pre>
+                <p><em>Add a group history value.  Useful in calculating statistics for a specific group.</em></p>
+                <p>This method is normally called by the report generator.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$grp_key </td>
+                                <td><p>The name of the group</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$val </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_changed" name="method_changed" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">changed()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">changed(string  <span class="argument">$val</span>) : boolean</pre>
+                <p><em>A function to test if the supplied value for this column has changed from the previous
+global value.  This can be useful for detecting if a group has changed.</em></p>
+                <p>This method is normally called by the report generator.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$val </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_reset_group" name="method_reset_group" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">reset_group()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">reset_group(string  <span class="argument">$grp_key</span>) </pre>
+                <p><em>Clear all cached values for a specified group</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$grp_key </td>
+                                <td><p>The name of the group</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_count" name="method_get_count" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_count()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_count() : integer</pre>
+                <p><em>Get the count of values stored for this column.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/CGExtensions.reports.tabular_report_defn_column.html#method_add_history_value"><span class="namespace-wrapper">\CGExtensions\reports\tabular_report_defn_column::add_history_value()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_min" name="method_get_min" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_min()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_min() : string</pre>
+                <p><em>Get the minimum of all values stored for this column.</em></p>
+                <p>This method assumes that the data stored is in someway numeric, and can be
+compared using numeric operators.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_max" name="method_get_max" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_max()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_max() : string</pre>
+                <p><em>Get the maximum of all values stored for this column.</em></p>
+                <p>This method assumes that the data stored is in someway numeric, and can be
+compared using numeric operators.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_sum" name="method_get_sum" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_sum()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_sum() : string</pre>
+                <p><em>Get the sum of all values stored for this column.</em></p>
+                <p>This method assumes that the data stored is in someway numeric, and can be
+compared using numeric operators.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_mean" name="method_get_mean" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_mean()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_mean() : string</pre>
+                <p><em>Get the mean/average of all values stored for this column.</em></p>
+                <p>This method assumes that the data stored is in someway numeric, and can be
+compared using numeric operators.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_median" name="method_get_median" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_median()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_median() : string</pre>
+                <p><em>Get the median/middle of all values stored for this column.</em></p>
+                <p>This method assumes that the data stored is in someway numeric, and can be
+compared using numeric operators.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_grp_count" name="method_get_grp_count" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_grp_count()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_grp_count(string  <span class="argument">$grp_key</span>) : integer</pre>
+                <p><em>Get the count of all values stored for this column for the specified group.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$grp_key </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_grp_min" name="method_get_grp_min" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_grp_min()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_grp_min(string  <span class="argument">$grp_key</span>) : string</pre>
+                <p><em>Get the minimum of all values stored for this column for the specified group
+This method assumes that the data stored is in someway numeric, and can be
+compared using numeric operators.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$grp_key </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_grp_max" name="method_get_grp_max" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_grp_max()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_grp_max(string  <span class="argument">$grp_key</span>) : string</pre>
+                <p><em>Get the maximum of all values stored for this column for the specified group
+This method assumes that the data stored is in someway numeric, and can be
+compared using numeric operators.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$grp_key </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_grp_sum" name="method_get_grp_sum" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_grp_sum()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_grp_sum(string  <span class="argument">$grp_key</span>) : string</pre>
+                <p><em>Get the sum of all values stored for this column for the specified group
+This method assumes that the data stored is in someway numeric, and can be
+compared using numeric operators.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$grp_key </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_grp_mean" name="method_get_grp_mean" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_grp_mean()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_grp_mean(string  <span class="argument">$grp_key</span>) : string</pre>
+                <p><em>Get the mean/average of all values stored for this column for the specified group
+This method assumes that the data stored is in someway numeric, and can be
+compared using numeric operators.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$grp_key </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_grp_median" name="method_get_grp_median" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_grp_median()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_grp_median(string  <span class="argument">$grp_key</span>) : string</pre>
+                <p><em>Get the median/middle of all values stored for this column for the specified group
+This method assumes that the data stored is in someway numeric, and can be
+compared using numeric operators.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$grp_key </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_grp_values" name="method_get_grp_values" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">get_grp_values()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_grp_values(string  <span class="argument">$grp_key</span>) : array&lt;mixed,string&gt;</pre>
+                <p><em>Get all of the values stored for this column for the named group.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$grp_key </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array&lt;mixed,string&gt;
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">class.tabular_report_defn.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/lib/reports/class.tabular_report_defn.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/CGExtensions.html">\CGExtensions</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on March 9th, 2020 at 16:29.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>     &raquo; Compilation errors
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">CGExtensions 1.65.2</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/CGExtensions.html">\CGExtensions</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">123</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">65</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+
+            <ul class="side-nav nav nav-list">
+                <li class="nav-header">Navigation</li>
+                                                                            <li><a href="#CGExtensions.module.php"><i class="icon-file"></i> CGExtensions.module.php</a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="#lib/interface.ITranslator.php"><i class="icon-file"></i> lib/interface.ITranslator.php</a></li>
+                                                                                                                                                                                                                                                                                                                                    <li><a href="#lib/class.DailyHookTask.php"><i class="icon-file"></i> lib/class.DailyHookTask.php</a></li>
+                                                                                                                                                                                                                    <li><a href="#lib/class.HourlyHookTask.php"><i class="icon-file"></i> lib/class.HourlyHookTask.php</a></li>
+                                                                                                                                                            <li><a href="#lib/class.secure_settings.php"><i class="icon-file"></i> lib/class.secure_settings.php</a></li>
+                                                                                                                                                                                                                    <li><a href="#lib/Email/interface.iEmailStorage.php"><i class="icon-file"></i> lib/Email/interface.iEmailStorage.php</a></li>
+                                                                                                                                                                                                                                                                            <li><a href="#lib/Email/interface.EmailProcessor.php"><i class="icon-file"></i> lib/Email/interface.EmailProcessor.php</a></li>
+                                                                                                                                                            <li><a href="#lib/Email/class.MailTransportError.php"><i class="icon-file"></i> lib/Email/class.MailTransportError.php</a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="#lib/class.watermarker.php"><i class="icon-file"></i> lib/class.watermarker.php</a></li>
+                                                                                                                                                            <li><a href="#lib/class.cge_array.php"><i class="icon-file"></i> lib/class.cge_array.php</a></li>
+                                                                                                                                                            <li><a href="#lib/class.cge_uploader.php"><i class="icon-file"></i> lib/class.cge_uploader.php</a></li>
+                                                                                                                                                                                                                                                                            <li><a href="#lib/class.lookup_table_manager.php"><i class="icon-file"></i> lib/class.lookup_table_manager.php</a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="#lib/class.Translator.php"><i class="icon-file"></i> lib/class.Translator.php</a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
+        </div>
+
+        <div class="span10 offset2">
+            <ul class="breadcrumb">
+                <li><a href="../"><i class="icon-remove-sign"></i></a><span class="divider">\</span></li>
+                <li>Compilation Errors</li>
+            </ul>
+
+            
+                            <div class="package-contents">
+                                            <a name="CGExtensions.module.php" id="CGExtensions.module.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            CGExtensions.module.php
+                            <small style="float: right;padding-right: 10px;">6</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>93</td>
+                                        <td>Argument $classname is missing from the Docblock of __cge_unserialize_callback</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>93</td>
+                                        <td>No summary for function \__cge_unserialize_callback()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>notice</td>
+                                        <td>1727</td>
+                                        <td>Parameter $value could not be found in CGRemoveUserPreference()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1889</td>
+                                        <td>Name of argument $tpl_rsrc does not match with the DocBlock&#039;s name $tpl_name in ProcessSimpleTemplate()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1889</td>
+                                        <td>The type hint of the argument is incorrect for the type definition of the @param tag with argument $tpl_rsrc in ProcessSimpleTemplate()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>notice</td>
+                                        <td>1889</td>
+                                        <td>Parameter $tpl_name could not be found in ProcessSimpleTemplate()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="lib/interface.ITranslator.php" id="lib/interface.ITranslator.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            lib/interface.ITranslator.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for interface \CGExtensions\ITranslator</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>No summary for method __invoke()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="lib/class.DailyHookTask.php" id="lib/class.DailyHookTask.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            lib/class.DailyHookTask.php
+                            <small style="float: right;padding-right: 10px;">12</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>9</td>
+                                        <td>No summary for class \CGExtensions\DailyHookTask</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>No summary for method get_name()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>No summary for method get_description()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>Argument $time is missing from the Docblock of test</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>No summary for method test()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>22</td>
+                                        <td>Argument $time is missing from the Docblock of execute</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>22</td>
+                                        <td>No summary for method execute()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>29</td>
+                                        <td>Argument $time is missing from the Docblock of on_success</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>29</td>
+                                        <td>No summary for method on_success()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>35</td>
+                                        <td>Argument $time is missing from the Docblock of on_failure</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>35</td>
+                                        <td>No summary for method on_failure()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="lib/class.HourlyHookTask.php" id="lib/class.HourlyHookTask.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            lib/class.HourlyHookTask.php
+                            <small style="float: right;padding-right: 10px;">12</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>9</td>
+                                        <td>No summary for class \CGExtensions\HourlyHookTask</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>No summary for method get_name()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>No summary for method get_description()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>Argument $time is missing from the Docblock of test</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>No summary for method test()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>22</td>
+                                        <td>Argument $time is missing from the Docblock of execute</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>22</td>
+                                        <td>No summary for method execute()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>29</td>
+                                        <td>Argument $time is missing from the Docblock of on_success</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>29</td>
+                                        <td>No summary for method on_success()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>35</td>
+                                        <td>Argument $time is missing from the Docblock of on_failure</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>35</td>
+                                        <td>No summary for method on_failure()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="lib/class.secure_settings.php" id="lib/class.secure_settings.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            lib/class.secure_settings.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="lib/Email/interface.iEmailStorage.php" id="lib/Email/interface.iEmailStorage.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            lib/Email/interface.iEmailStorage.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>notice</td>
+                                        <td>71</td>
+                                        <td>Parameter $name could not be found in save()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="lib/Email/interface.EmailProcessor.php" id="lib/Email/interface.EmailProcessor.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            lib/Email/interface.EmailProcessor.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>52</td>
+                                        <td>No summary for class \CGExtensions\Email\Exception</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="lib/Email/class.MailTransportError.php" id="lib/Email/class.MailTransportError.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            lib/Email/class.MailTransportError.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>No summary for class \CGExtensions\Email\MailTransportError</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="lib/class.watermarker.php" id="lib/class.watermarker.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            lib/class.watermarker.php
+                            <small style="float: right;padding-right: 10px;">64</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>40</td>
+                                        <td>No summary for class \CGExtensions\wm_exception</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>50</td>
+                                        <td>No summary for class \CGExtensions\watermarker</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>42</td>
+                                        <td>Argument $str is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>42</td>
+                                        <td>Argument $code is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>42</td>
+                                        <td>Argument $parent is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>42</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>81</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>104</td>
+                                        <td>No summary for method get_error()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>109</td>
+                                        <td>Argument $text is missing from the Docblock of set_watermark_text</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>109</td>
+                                        <td>No summary for method set_watermark_text()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>115</td>
+                                        <td>Argument $filename is missing from the Docblock of set_watermark_image</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>115</td>
+                                        <td>No summary for method set_watermark_image()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>120</td>
+                                        <td>Argument $alignment is missing from the Docblock of set_alignment</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>120</td>
+                                        <td>No summary for method set_alignment()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>125</td>
+                                        <td>No summary for method get_alignment()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>130</td>
+                                        <td>Argument $font is missing from the Docblock of set_font</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>130</td>
+                                        <td>No summary for method set_font()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>135</td>
+                                        <td>Argument $points is missing from the Docblock of set_text_size</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>135</td>
+                                        <td>No summary for method set_text_size()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>140</td>
+                                        <td>Argument $angle is missing from the Docblock of set_text_angle</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>140</td>
+                                        <td>No summary for method set_text_angle()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>147</td>
+                                        <td>Argument $red is missing from the Docblock of set_text_color</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>147</td>
+                                        <td>Argument $green is missing from the Docblock of set_text_color</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>147</td>
+                                        <td>Argument $blue is missing from the Docblock of set_text_color</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>147</td>
+                                        <td>No summary for method set_text_color()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>161</td>
+                                        <td>Argument $red is missing from the Docblock of set_background_color</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>161</td>
+                                        <td>Argument $green is missing from the Docblock of set_background_color</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>161</td>
+                                        <td>Argument $blue is missing from the Docblock of set_background_color</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>161</td>
+                                        <td>Argument $transparent is missing from the Docblock of set_background_color</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>161</td>
+                                        <td>No summary for method set_background_color()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>176</td>
+                                        <td>Argument $num is missing from the Docblock of set_translucency</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>176</td>
+                                        <td>No summary for method set_translucency()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>184</td>
+                                        <td>No summary for method is_ready()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>193</td>
+                                        <td>Argument $width is missing from the Docblock of _generateImageFromText</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>193</td>
+                                        <td>Argument $height is missing from the Docblock of _generateImageFromText</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>193</td>
+                                        <td>No summary for method _generateImageFromText()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>236</td>
+                                        <td>Argument $filename is missing from the Docblock of _loadFile</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>236</td>
+                                        <td>Argument $sizeinfo is missing from the Docblock of _loadFile</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>236</td>
+                                        <td>Argument $istransparent is missing from the Docblock of _loadFile</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>236</td>
+                                        <td>No summary for method _loadFile()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>266</td>
+                                        <td>No summary for method create_watermark_rsrc()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>292</td>
+                                        <td>Argument $srcfile is missing from the Docblock of get_watermarked_image</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>292</td>
+                                        <td>No summary for method get_watermarked_image()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>400</td>
+                                        <td>Argument $srcfile is missing from the Docblock of create_watermarked_image</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>400</td>
+                                        <td>Argument $destfile is missing from the Docblock of create_watermarked_image</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>400</td>
+                                        <td>No summary for method create_watermarked_image()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>62</td>
+                                        <td>No summary for property $_text</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>63</td>
+                                        <td>No summary for property $_bg_color</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>64</td>
+                                        <td>No summary for property $_text_color</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>65</td>
+                                        <td>No summary for property $_text_angle</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>66</td>
+                                        <td>No summary for property $_text_font</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>67</td>
+                                        <td>No summary for property $_text_size</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>68</td>
+                                        <td>No summary for property $_wmimg_file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>69</td>
+                                        <td>No summary for property $_alignment</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>70</td>
+                                        <td>No summary for property $_hmargin</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>71</td>
+                                        <td>No summary for property $_vmargin</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>72</td>
+                                        <td>No summary for property $_padding_x</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>73</td>
+                                        <td>No summary for property $_padding_y</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>74</td>
+                                        <td>No summary for property $_transparent</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>75</td>
+                                        <td>No summary for property $_translucency</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>77</td>
+                                        <td>No summary for property $t_wmsize</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>78</td>
+                                        <td>No summary for property $h_textcolor</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>79</td>
+                                        <td>No summary for property $t_error</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="lib/class.cge_array.php" id="lib/class.cge_array.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            lib/class.cge_array.php
+                            <small style="float: right;padding-right: 10px;">4</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>358</td>
+                                        <td>Argument $input is missing from the Docblock of str_putcsv</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>358</td>
+                                        <td>Argument $delimiter is missing from the Docblock of str_putcsv</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>358</td>
+                                        <td>Argument $enclosure is missing from the Docblock of str_putcsv</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>358</td>
+                                        <td>No summary for method str_putcsv()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="lib/class.cge_uploader.php" id="lib/class.cge_uploader.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            lib/class.cge_uploader.php
+                            <small style="float: right;padding-right: 10px;">4</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>90</td>
+                                        <td>Argument $prefix is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>90</td>
+                                        <td>Argument $destdir is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>90</td>
+                                        <td>Argument $obj is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>90</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="lib/class.lookup_table_manager.php" id="lib/class.lookup_table_manager.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            lib/class.lookup_table_manager.php
+                            <small style="float: right;padding-right: 10px;">8</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>40</td>
+                                        <td>No summary for class \CGExtensions\lookup_table_manager</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>44</td>
+                                        <td>Argument $module is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>44</td>
+                                        <td>Argument $class is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>44</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>52</td>
+                                        <td>No summary for method get_class()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>57</td>
+                                        <td>No summary for method display_manager()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>42</td>
+                                        <td>No summary for property $_data</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="lib/class.Translator.php" id="lib/class.Translator.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            lib/class.Translator.php
+                            <small style="float: right;padding-right: 10px;">6</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>5</td>
+                                        <td>No summary for class \CGExtensions\Translator</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>9</td>
+                                        <td>Argument $mod is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>9</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>No summary for method __invoke()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for property $mod</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                            <div class="package-contents">
+                                    </div>
+                    </div>
+    </section>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/CGExtensions.html">\CGExtensions</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on March 9th, 2020 at 16:30.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

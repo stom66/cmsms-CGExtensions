@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>CGExtensions 1.65.2</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">CGExtensions 1.65.2</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/CGExtensions.html">\CGExtensions</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">123</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">65</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-661095176"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-661095176" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1320558303"></a>
+                                <a href="../namespaces/CGExtensions.html" style="margin-left: 30px; padding-left: 0">CGExtensions</a>
+            </div>
+            <div id="namespace-1320558303" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-873837151"></a>
+                                <a href="../namespaces/CGExtensions.Email.html" style="margin-left: 30px; padding-left: 0">Email</a>
+            </div>
+            <div id="namespace-873837151" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/CGExtensions.Email.EmailProcessor.html">EmailProcessor</a></li>
+                                                    <li class="interface"><a href="../classes/CGExtensions.Email.iEmailStorage.html">iEmailStorage</a></li>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.Email.AddressException.html">AddressException</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.Email.html">Email</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.EmailDestination.html">EmailDestination</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.Exception.html">Exception</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.FileEmailStorage.html">FileEmailStorage</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.MailTransportError.html">MailTransportError</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Email.SimpleEmailProcessor.html">SimpleEmailProcessor</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1241218660"></a>
+                                <a href="../namespaces/CGExtensions.jsloader.html" style="margin-left: 30px; padding-left: 0">jsloader</a>
+            </div>
+            <div id="namespace-1241218660" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.jsloader.jsloader.html">jsloader</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.jsloader.libdefn.html">libdefn</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-225877339"></a>
+                                <a href="../namespaces/CGExtensions.LinkDefinition.html" style="margin-left: 30px; padding-left: 0">LinkDefinition</a>
+            </div>
+            <div id="namespace-225877339" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/CGExtensions.LinkDefinition.LinkDefinitionGenerator.html">LinkDefinitionGenerator</a></li>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.LinkDefinition.CoreLinkDefinitionGenerator.html">CoreLinkDefinitionGenerator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.LinkDefinition.DataRef.html">DataRef</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.LinkDefinition.LinkDefinition.html">LinkDefinition</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.LinkDefinition.LinkDefinitionGeneratorFactory.html">LinkDefinitionGeneratorFactory</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1767752127"></a>
+                                <a href="../namespaces/CGExtensions.query.html" style="margin-left: 30px; padding-left: 0">query</a>
+            </div>
+            <div id="namespace-1767752127" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.query.array_query.html">array_query</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.array_resultset.html">array_resultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.base_resultset.html">base_resultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.csvfilequery.html">csvfilequery</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.csvfileresultset.html">csvfileresultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.pagination.html">pagination</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.query.html">query</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.resultset.html">resultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.sql_query.html">sql_query</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.sql_resultset.html">sql_resultset</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.txtfilequery.html">txtfilequery</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.query.txtfileresultset.html">txtfileresultset</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1703382119"></a>
+                                <a href="../namespaces/CGExtensions.reports.html" style="margin-left: 30px; padding-left: 0">reports</a>
+            </div>
+            <div id="namespace-1703382119" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.reports.data_report_generator.html">data_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.formatted_report_defn.html">formatted_report_defn</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.formatted_report_generator.html">formatted_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.html_report_generator.html">html_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.report_defn.html">report_defn</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.report_generator.html">report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_cellfmt.html">tabular_report_cellfmt</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_defn.html">tabular_report_defn</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_defn_column.html">tabular_report_defn_column</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_defn_group.html">tabular_report_defn_group</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_defn_group_line.html">tabular_report_defn_group_line</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.tabular_report_generator.html">tabular_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.template_report_generator.html">template_report_generator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.reports.text_report_generator.html">text_report_generator</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/CGExtensions.ITranslator.html">ITranslator</a></li>
+                                                                                                    <li class="class"><a href="../classes/CGExtensions.AssocData.html">AssocData</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.AssocDataNode.html">AssocDataNode</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.content_list_builder.html">content_list_builder</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.DailyHookTask.html">DailyHookTask</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.HourlyHookTask.html">HourlyHookTask</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.logger.html">logger</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.lookup_form_data.html">lookup_form_data</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.lookup_table.html">lookup_table</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.lookup_table_manager.html">lookup_table_manager</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.Translator.html">Translator</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.watermarker.html">watermarker</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.wm_exception.html">wm_exception</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cg_db_exception.html">cg_db_exception</a></li>
+                                                    <li class="class"><a href="../classes/cg_exception.html">cg_exception</a></li>
+                                                    <li class="class"><a href="../classes/cg_fileupload.html">cg_fileupload</a></li>
+                                                    <li class="class"><a href="../classes/cg_InvalidDataException.html">cg_InvalidDataException</a></li>
+                                                    <li class="class"><a href="../classes/cg_notfoundException.html">cg_notfoundException</a></li>
+                                                    <li class="class"><a href="../classes/cg_sql_error.html">cg_sql_error</a></li>
+                                                    <li class="class"><a href="../classes/cge_address.html">cge_address</a></li>
+                                                    <li class="class"><a href="../classes/cge_array.html">cge_array</a></li>
+                                                    <li class="class"><a href="../classes/cge_browser.html">cge_browser</a></li>
+                                                    <li class="class"><a href="../classes/cge_cached_remote_file.html">cge_cached_remote_file</a></li>
+                                                    <li class="class"><a href="../classes/cge_datastore.html">cge_datastore</a></li>
+                                                    <li class="class"><a href="../classes/cge_date.html">cge_date</a></li>
+                                                    <li class="class"><a href="../classes/cge_date_utils.html">cge_date_utils</a></li>
+                                                    <li class="class"><a href="../classes/cge_debug.html">cge_debug</a></li>
+                                                    <li class="class"><a href="../classes/cge_dir.html">cge_dir</a></li>
+                                                    <li class="class"><a href="../classes/cge_encrypt.html">cge_encrypt</a></li>
+                                                    <li class="class"><a href="../classes/cge_headers.html">cge_headers</a></li>
+                                                    <li class="class"><a href="../classes/cge_http.html">cge_http</a></li>
+                                                    <li class="class"><a href="../classes/cge_image.html">cge_image</a></li>
+                                                    <li class="class"><a href="../classes/cge_message.html">cge_message</a></li>
+                                                    <li class="class"><a href="../classes/cge_param.html">cge_param</a></li>
+                                                    <li class="class"><a href="../classes/cge_redirect.html">cge_redirect</a></li>
+                                                    <li class="class"><a href="../classes/cge_session.html">cge_session</a></li>
+                                                    <li class="class"><a href="../classes/cge_setup.html">cge_setup</a></li>
+                                                    <li class="class"><a href="../classes/cge_smartcache_handler.html">cge_smartcache_handler</a></li>
+                                                    <li class="class"><a href="../classes/cge_string.html">cge_string</a></li>
+                                                    <li class="class"><a href="../classes/cge_template_admin.html">cge_template_admin</a></li>
+                                                    <li class="class"><a href="../classes/cge_template_utils.html">cge_template_utils</a></li>
+                                                    <li class="class"><a href="../classes/cge_tmpdata.html">cge_tmpdata</a></li>
+                                                    <li class="class"><a href="../classes/cge_units.html">cge_units</a></li>
+                                                    <li class="class"><a href="../classes/cge_uploader.html">cge_uploader</a></li>
+                                                    <li class="class"><a href="../classes/cge_url.html">cge_url</a></li>
+                                                    <li class="class"><a href="../classes/cge_userops.html">cge_userops</a></li>
+                                                    <li class="class"><a href="../classes/cge_utils.html">cge_utils</a></li>
+                                                    <li class="class"><a href="../classes/CGExtensions.html">CGExtensions</a></li>
+                                                    <li class="class"><a href="../classes/encrypted_store.html">encrypted_store</a></li>
+                                                    <li class="class"><a href="../classes/module_helper.html">module_helper</a></li>
+                                                    <li class="class"><a href="../classes/notification_message.html">notification_message</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/CGExtensions.html">\CGExtensions</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\CGExtensions</small>watermarker</h1>
+                    <p><em></em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method_get_error" class="">get_error()</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method_set_watermark_text" class="">set_watermark_text()</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method_set_watermark_image" class="">set_watermark_image()</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method_set_alignment" class="">set_alignment()</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method_get_alignment" class="">get_alignment()</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method_set_font" class="">set_font()</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method_set_text_size" class="">set_text_size()</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method_set_text_angle" class="">set_text_angle()</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method_set_text_color" class="">set_text_color()</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method_set_background_color" class="">set_background_color()</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method_set_translucency" class="">set_translucency()</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method_is_ready" class="">is_ready()</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method_create_watermark_rsrc" class="">create_watermark_rsrc()</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method_get_watermarked_image" class="">get_watermarked_image()</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method_create_watermarked_image" class="">create_watermarked_image()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/CGExtensions.watermarker.html#constant_ALIGN_UL" class="">ALIGN_UL</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#constant_ALIGN_UC" class="">ALIGN_UC</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#constant_ALIGN_UR" class="">ALIGN_UR</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#constant_ALIGN_ML" class="">ALIGN_ML</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#constant_ALIGN_MC" class="">ALIGN_MC</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#constant_ALIGN_MR" class="">ALIGN_MR</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#constant_ALIGN_LL" class="">ALIGN_LL</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#constant_ALIGN_LC" class="">ALIGN_LC</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#constant_ALIGN_LR" class="">ALIGN_LR</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method__generateImageFromText" class="">_generateImageFromText()</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#method__loadFile" class="">_loadFile()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property__text" class="">$_text</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property__bg_color" class="">$_bg_color</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property__text_color" class="">$_text_color</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property__text_angle" class="">$_text_angle</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property__text_font" class="">$_text_font</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property__text_size" class="">$_text_size</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property__wmimg_file" class="">$_wmimg_file</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property__alignment" class="">$_alignment</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property__hmargin" class="">$_hmargin</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property__vmargin" class="">$_vmargin</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property__padding_x" class="">$_padding_x</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property__padding_y" class="">$_padding_y</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property__transparent" class="">$_transparent</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property__translucency" class="">$_translucency</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property_t_wmsize" class="">$t_wmsize</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property_h_textcolor" class="">$h_textcolor</a><br />
+                                                                    <a href="../classes/CGExtensions.watermarker.html#property_t_error" class="">$t_error</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/lib.class.watermarker.html"><div class="path-wrapper">lib/class.watermarker.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">CGExtensions</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\CGExtensions\watermarker</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALIGN_UL" name="constant_ALIGN_UL" class="anchor"></a>
+            <article id="constant_ALIGN_UL" class="constant">
+                <h3 class="">ALIGN_UL</h3>
+                <pre class="signature">ALIGN_UL</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALIGN_UC" name="constant_ALIGN_UC" class="anchor"></a>
+            <article id="constant_ALIGN_UC" class="constant">
+                <h3 class="">ALIGN_UC</h3>
+                <pre class="signature">ALIGN_UC</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALIGN_UR" name="constant_ALIGN_UR" class="anchor"></a>
+            <article id="constant_ALIGN_UR" class="constant">
+                <h3 class="">ALIGN_UR</h3>
+                <pre class="signature">ALIGN_UR</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALIGN_ML" name="constant_ALIGN_ML" class="anchor"></a>
+            <article id="constant_ALIGN_ML" class="constant">
+                <h3 class="">ALIGN_ML</h3>
+                <pre class="signature">ALIGN_ML</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALIGN_MC" name="constant_ALIGN_MC" class="anchor"></a>
+            <article id="constant_ALIGN_MC" class="constant">
+                <h3 class="">ALIGN_MC</h3>
+                <pre class="signature">ALIGN_MC</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALIGN_MR" name="constant_ALIGN_MR" class="anchor"></a>
+            <article id="constant_ALIGN_MR" class="constant">
+                <h3 class="">ALIGN_MR</h3>
+                <pre class="signature">ALIGN_MR</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALIGN_LL" name="constant_ALIGN_LL" class="anchor"></a>
+            <article id="constant_ALIGN_LL" class="constant">
+                <h3 class="">ALIGN_LL</h3>
+                <pre class="signature">ALIGN_LL</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALIGN_LC" name="constant_ALIGN_LC" class="anchor"></a>
+            <article id="constant_ALIGN_LC" class="constant">
+                <h3 class="">ALIGN_LC</h3>
+                <pre class="signature">ALIGN_LC</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALIGN_LR" name="constant_ALIGN_LR" class="anchor"></a>
+            <article id="constant_ALIGN_LR" class="constant">
+                <h3 class="">ALIGN_LR</h3>
+                <pre class="signature">ALIGN_LR</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__text" name="property__text" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_text</h3>
+                <pre class="signature">$_text : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__bg_color" name="property__bg_color" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_bg_color</h3>
+                <pre class="signature">$_bg_color : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__text_color" name="property__text_color" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_text_color</h3>
+                <pre class="signature">$_text_color : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__text_angle" name="property__text_angle" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_text_angle</h3>
+                <pre class="signature">$_text_angle : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__text_font" name="property__text_font" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_text_font</h3>
+                <pre class="signature">$_text_font : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__text_size" name="property__text_size" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_text_size</h3>
+                <pre class="signature">$_text_size : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__wmimg_file" name="property__wmimg_file" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_wmimg_file</h3>
+                <pre class="signature">$_wmimg_file : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__alignment" name="property__alignment" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_alignment</h3>
+                <pre class="signature">$_alignment : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__hmargin" name="property__hmargin" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_hmargin</h3>
+                <pre class="signature">$_hmargin : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__vmargin" name="property__vmargin" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_vmargin</h3>
+                <pre class="signature">$_vmargin : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__padding_x" name="property__padding_x" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_padding_x</h3>
+                <pre class="signature">$_padding_x : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__padding_y" name="property__padding_y" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_padding_y</h3>
+                <pre class="signature">$_padding_y : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__transparent" name="property__transparent" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_transparent</h3>
+                <pre class="signature">$_transparent : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__translucency" name="property__translucency" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_translucency</h3>
+                <pre class="signature">$_translucency : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_t_wmsize" name="property_t_wmsize" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$t_wmsize</h3>
+                <pre class="signature">$t_wmsize : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_h_textcolor" name="property_h_textcolor" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$h_textcolor</h3>
+                <pre class="signature">$h_textcolor : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_t_error" name="property_t_error" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$t_error</h3>
+                <pre class="signature">$t_error : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_error" name="method_get_error" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_error()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_error() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_watermark_text" name="method_set_watermark_text" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_watermark_text()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_watermark_text(  <span class="argument">$text</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$text </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_watermark_image" name="method_set_watermark_image" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_watermark_image()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_watermark_image(  <span class="argument">$filename</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$filename </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_alignment" name="method_set_alignment" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_alignment()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_alignment(  <span class="argument">$alignment</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$alignment </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_alignment" name="method_get_alignment" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_alignment()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_alignment() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_font" name="method_set_font" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_font()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_font(  <span class="argument">$font</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$font </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_text_size" name="method_set_text_size" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_text_size()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_text_size(  <span class="argument">$points</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$points </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_text_angle" name="method_set_text_angle" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_text_angle()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_text_angle(  <span class="argument">$angle</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$angle </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_text_color" name="method_set_text_color" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_text_color()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_text_color(  <span class="argument">$red</span>,   <span class="argument">$green</span>,   <span class="argument">$blue</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$red </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$green </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$blue </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_background_color" name="method_set_background_color" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_background_color()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_background_color(  <span class="argument">$red</span>,   <span class="argument">$green</span>,   <span class="argument">$blue</span>,   <span class="argument">$transparent</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$red </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$green </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$blue </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$transparent </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set_translucency" name="method_set_translucency" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set_translucency()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set_translucency(  <span class="argument">$num</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$num </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_is_ready" name="method_is_ready" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">is_ready()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">is_ready() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_create_watermark_rsrc" name="method_create_watermark_rsrc" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">create_watermark_rsrc()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">create_watermark_rsrc() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_watermarked_image" name="method_get_watermarked_image" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_watermarked_image()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_watermarked_image(  <span class="argument">$srcfile</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$srcfile </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_create_watermarked_image" name="method_create_watermarked_image" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">create_watermarked_image()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">create_watermarked_image(  <span class="argument">$srcfile</span>,   <span class="argument">$destfile</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$srcfile </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$destfile </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__generateImageFromText" name="method__generateImageFromText" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">_generateImageFromText()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_generateImageFromText(  <span class="argument">$width</span>,   <span class="argument">$height</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$width </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$height </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__loadFile" name="method__loadFile" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">_loadFile()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_loadFile(  <span class="argument">$filename</span>,   <span class="argument">$sizeinfo</span>,   <span class="argument">$istransparent = false</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$filename </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$sizeinfo </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$istransparent </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">class.watermarker.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/lib/class.watermarker.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/CGExtensions.html">\CGExtensions</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on March 9th, 2020 at 16:29.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
