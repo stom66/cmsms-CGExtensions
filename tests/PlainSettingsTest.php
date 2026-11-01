@@ -76,17 +76,16 @@ class PlainSettingsTest extends TestCase
 
     public function testCanWriteEncodable()
     {
-	class myClass implements JsonSerializable
-	{
-            public function JsonSerialize() 
-            {
-               return [ 'foo' => 'bar' ];
-	    }
-
-	} // class
-
 	@unlink($this->filename);
-	$test = new myClass;
+	$test = new class implements JsonSerializable
+	{
+		// MARK: jsonSerialize
+		/** Return JSON-safe test data. */
+		public function jsonSerialize()
+		{
+			return [ 'foo' => 'bar' ];
+		}
+	};
 	$obj = new secure_settings_io();
 	$obj->write_to($this->filename, $test);
         $this->assertFileExists($this->filename); 
