@@ -30,12 +30,10 @@ only have to be made once.
 
 ## Version number
 
-The module still reports version **1.65.2**, deliberately. If the version
-in `moduleinfo.ini` / `GetVersion()` is raised, CMSMS treats the module as
-needing an upgrade and **will not load it** until someone runs the upgrade in
-Module Manager. Keeping the upstream version means the fork can be dropped
-into an existing site with no database step. Fork changes are tracked by this
-repository's commits (and tags, when made) instead.
+The fork reports version **1.65.3**, a patch release above the final upstream
+1.65.2, so Module Manager shows that the fork is installed. After replacing or
+updating the module, run the upgrade offered in Module Manager. CMSMS will not
+load the module until it has run. This release has no schema or data migrations.
 
 ## Installing / updating a site
 
@@ -94,7 +92,7 @@ See each commit message for the error it fixes and how it was verified.
 - Test against the PHP versions in the table above (`php -l` is not enough:
   load the classes and exercise the feature, since many PHP 8 problems only
   appear at runtime).
-- Don't change the version number (see above).
+- Bump the patch version for each fork release (see above).
 
 ## Licence
 

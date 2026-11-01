@@ -324,7 +324,7 @@ class CGExtensions extends CMSModule
      * @return string
      */
     public function GetVersion() {
-        if( get_class($this) == 'CGExtensions' ) return '1.65.2';
+        if( get_class($this) == 'CGExtensions' ) return '1.65.3';
         $str = parent::GetVersion();
         return $str;
     }

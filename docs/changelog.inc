@@ -684,4 +684,12 @@
         <li>Several general bug fixes.</li>	
     </ul>
 </li>
+<li>Version 1.65.3 - November 2026
+    <ul>
+        <li>Fork release by stom66 for PHP 8.x compatibility.</li>
+        <li>Fixed removed string offset syntax, missing property declarations, nullable types and implicit casts.</li>
+        <li>Fixed GdImage support in the watermarker, the {cge_cached_url} plugin and jsmin at end of input.</li>
+        <li>Fixed syntax errors in the secure settings class.</li>
+    </ul>
+</li>
 </ul>
