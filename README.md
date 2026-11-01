@@ -1,4 +1,6 @@
-# CGExtensions (maintained fork)
+# cmsms-CGExtensions
+
+Maintained fork of the **CGExtensions** module for CMS Made Simple.
 
 Calguy's Module Extensions: the shared PHP library and Smarty plugins (`{cge_*}`, `{cgjs_*}`, form, image, query, email and report helpers) that the other CG modules (CGSmartImage, CGSimpleSmarty, CGBlog, CGCalendar, CGFeedback, …) are built on.
 
@@ -37,13 +39,15 @@ repository's commits (and tags, when made) instead.
 
 ## Installing / updating a site
 
-The folder name must be exactly `CGExtensions`.
+The repository is called `cmsms-CGExtensions`, but the module folder inside a site must be
+named exactly **`CGExtensions`** (CMSMS finds modules by folder name), so always give the
+target folder when cloning:
 
 ```sh
 # new install of the fork into a site
 cd /path/to/site/modules
 mv CGExtensions CGExtensions.orig          # keep the old copy until verified, then delete it
-git clone <this-repository-url> CGExtensions
+git clone https://github.com/stom66/cmsms-CGExtensions.git CGExtensions
 
 # later updates
 cd /path/to/site/modules/CGExtensions && git pull
@@ -70,13 +74,17 @@ fix:
 - fix(CGExtensions): qualify global class names used inside namespaces
 - fix(CGExtensions): match parent signature in data_report_generator::do_group_header
 - fix(CGExtensions): mark ArrayAccess/Iterator/JsonSerializable methods #[\ReturnTypeWillChange]
+- chore: take the newer 1.65.2-build upstream files (API docs, ContentPostRender)
+- fix: repair three syntax errors in lib/class.secure_settings.php
+- test: replace nested class declaration in PlainSettingsTest
+- fix: explicit nullable type for secure_settings constructor $salt
 
 See each commit message for the error it fixes and how it was verified.
 
 ## Known issues
 
-- `lib/class.secure_settings.php` is unfinished upstream code that has never parsed on any PHP version. Nothing loads it at runtime (only `tests/`), so it is left as-is here.
 - `_c1.dat` / `_d1.dat` are the upstream integrity checksums. CGExtensions' **Verify Modules** tool will therefore report the files this fork changed as modified; that is expected.
+- Older installations upgraded over many years can still contain files from pre-2017 versions that the current release no longer ships (e.g. `lib/class.cms_cache_driver.php`, `lib/class.cms_filecache_driver.php`, `lib/class.cg_watermark.php`, `lib/class.cge_smarty_plugins.php`, `action.do_addtemplate.php`, `svn-commit.tmp`). Replacing the module folder with a clone of this repository removes them; the cache-driver copies duplicate classes that CMSMS core now provides.
 
 ## Contributing
 
